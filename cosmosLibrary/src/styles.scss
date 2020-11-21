@@ -48,15 +48,14 @@ button:focus{
 }
 
 .custom-large-btn {
-    font-size: 23px;
+    font-size: 20px;
     background-color: $blue-2;
     color:$gray-3;
     border-radius: 10px;
     letter-spacing: 0.04rem;
     padding: 0.5rem;
     height: 40px;
-    width: 50%;
-    min-width: 200px;
+    min-width: 150px;
     border: 0;
     margin-top: 5%;
     align-self: center;
@@ -88,4 +87,18 @@ button:focus{
 .bg-color{
     background-color: #F1B764;
     height: 100%;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:$gray-1;
+    color:$gray-3;
+}
+
+
+.nopadding{
+    padding: 0 !important;
+    margin: 0 !important;
 }

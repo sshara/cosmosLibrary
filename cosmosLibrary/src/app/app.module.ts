@@ -47,7 +47,7 @@ import { InputDateComponent } from './components/system/input-date/input-date.co
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     InputImageComponent,
     InputDateComponent,
     InputSelectComponent,
-    HeaderComponent
+    HeaderComponent,
+    GeneralSnackBarComponent
   ],
   imports: [
     BrowserModule,
