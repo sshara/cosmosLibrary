@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -37,6 +38,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 import { LoginComponent } from './components/session/login/login.component';
 import { SignupComponent } from './components/session/signup/signup.component';
 import { RecoverPasswordComponent } from './components/session/recover-password/recover-password.component';
@@ -44,6 +46,9 @@ import { InputTextComponent } from './components/system/input-text/input-text.co
 import { InputImageComponent } from './components/system/input-image/input-image.component';
 import { InputDateComponent } from './components/system/input-date/input-date.component';
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
+=======
+import { environment } from '../environments/environment';
+>>>>>>> 5896903e29b25cf3dbbb94920160511961c482d1
 
 @NgModule({
   declarations: [
@@ -91,7 +96,8 @@ import { InputSelectComponent } from './components/system/input-select/input-sel
     FormsModule, 
     ReactiveFormsModule,
     MatRadioModule,
-    MatSliderModule
+    MatSliderModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
