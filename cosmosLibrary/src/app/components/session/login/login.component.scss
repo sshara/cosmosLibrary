@@ -1,0 +1,48 @@
+@import '~bootstrap/scss/bootstrap-grid';
+
+.bg-color{
+    background-color: #F1B764;
+    height: 100%;
+}
+
+.bg-image{
+    background-color: #EFF1C7;
+}
+
+@include media-breakpoint-between(xs, sm) {
+    .disposition2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .size1{
+        max-width: 100px;
+        max-height: 100px;
+    }
+    
+    .size2{
+        max-width: 300px;
+        max-height: 150px;
+    }
+}
+
+@include media-breakpoint-between(md, xl) {
+    .disposition2{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .size1{
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
+    .size2{
+        max-width: 400px;
+        max-height: 250px;
+    }
+}
