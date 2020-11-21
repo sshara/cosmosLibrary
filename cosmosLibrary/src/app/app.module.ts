@@ -33,7 +33,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -98,6 +99,8 @@ import { GeneralSnackBarComponent } from './components/system/general-snack-bar/
     ReactiveFormsModule,
     MatRadioModule,
     MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],

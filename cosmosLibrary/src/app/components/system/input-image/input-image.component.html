@@ -1,1 +1,13 @@
-<p>input-image works!</p>
+<div class="form-group1 disposition">
+    <div class="content-image">
+        <img [src]="imgURL | base64" class="profile">
+        <div>
+            <input matInput type="text" disabled  class="form-control" style="display:none; width:10%;">
+            <input #file type="file" id="inputPhoto" style="display:none; width:10%;" accept='image/*' (change)="fileChangeEvent(file.files)">
+            <div class="image-button" (click)="selectFile(file)">
+                <mat-icon [inline]=true>add</mat-icon>
+            </div>
+        </div>
+    </div>
+    <label class="text-secondary ml-2">{{headerText}}</label>
+</div>

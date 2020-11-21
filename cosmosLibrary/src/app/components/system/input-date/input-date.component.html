@@ -1,1 +1,9 @@
-<p>input-date works!</p>
+<div class="cont-select">
+    <p class="fecha">{{headerText}}</p>
+    <div class="cont-date">
+        <input matInput [matDatepicker]="picker1" class="date" [formControl]="control">
+        <mat-datepicker-toggle class="touch" matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker1></mat-datepicker>
+    </div>
+    
+</div>

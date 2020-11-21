@@ -1,0 +1,43 @@
+.image-button{
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 2rem;
+    background-color: #A8A8A8;
+    cursor: pointer;
+    position: absolute;
+    bottom: -9%;
+    right: -9%;
+}
+
+.disposition{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.mat-icon.mat-icon-inline{
+    font-size: 28px;
+    color: #FFF;
+    text-align: center;
+}
+
+
+.content-image{
+    position: relative;
+    align-self: center;
+    background-color: transparent;
+    z-index: 0;
+    margin-block-end: 5%;
+}
+
+.profile{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+

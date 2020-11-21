@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/services/system/general.service';
 import { SessionService } from 'src/app/services/session.service';
+import { GeneralSnackBarComponent } from '../../system/general-snack-bar/general-snack-bar.component';
 
 @Component({
   selector: 'app-login',
@@ -24,20 +25,21 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.loginForm.value);
     let {username, password} = this.loginForm.value;
-    let subscription = this._sessionService.login(username).subscribe(user =>{
+    let subscription = this._sessionService.logIn(username).subscribe(user =>{
       console.log(user);
       if(!user){
-        console.log('El usuario no existe');
+        let message = 'El usuario no existe';
+        this._generalService.openSnackBar({message});
         subscription.unsubscribe();
         return;
       }
       if(password === user.password){
-        console.log('success');
+        console.log(user.role);
       }
       else{
-        console.log('Contraseña Inválida');
+        let message = 'Contraseña Inválida';
+        this._generalService.openSnackBar({message});
       }
       subscription.unsubscribe();
     });

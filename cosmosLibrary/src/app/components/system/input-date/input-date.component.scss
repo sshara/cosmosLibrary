@@ -1,0 +1,39 @@
+.cont-select{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    margin-block-end: 5%;
+   }
+  
+.date{
+    flex-shrink: 5;
+    border:1px solid #ced4da;
+    border-radius: 20px;
+    padding-left: 0.75rem;
+    width: 80%;
+    color: #495057;
+}
+
+.cont-date{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    width: 70%;
+}
+
+.fecha{
+    margin-bottom: 0%!important;
+    padding-left: 2%;
+    margin-right: 8%;
+    text-align:left;
+    font-size: 1rem;
+    color: #495057;
+}
+
+.touch{
+    background-color: #8d230f;
+    border-radius: 50%;
+    margin-inline-start: 2%;
+}

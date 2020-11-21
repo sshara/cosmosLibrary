@@ -9,7 +9,7 @@ import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar'
 export class GeneralSnackBarComponent implements OnInit {
 
   constructor(public snackBarRef: MatSnackBarRef<GeneralSnackBarComponent>,
-    @Inject(MAT_SNACK_BAR_DATA)public information : any) { }
+    @Inject(MAT_SNACK_BAR_DATA) public information : any) { }
 
   ngOnInit(): void {
   }

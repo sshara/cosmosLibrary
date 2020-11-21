@@ -20,7 +20,7 @@ export class GeneralService {
     this._router.navigate(['/'+route]);
   }
 
-  openSnackBar(data: any, component: any = GeneralSnackBarComponent) : MatSnackBarRef<any> {
+  openSnackBar(data: any, component:any = GeneralSnackBarComponent) : MatSnackBarRef<any> {
     const snackRef = this._snackBar.openFromComponent(component, {
       data: data,
       duration: 4000,
