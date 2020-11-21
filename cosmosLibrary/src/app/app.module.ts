@@ -33,7 +33,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +48,11 @@ import { InputDateComponent } from './components/system/input-date/input-date.co
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
+<<<<<<< HEAD
 import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
+=======
+import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
+>>>>>>> d61398409d1c9ff88aff000616bd4497b648df9d
 
 @NgModule({
   declarations: [
@@ -60,7 +65,11 @@ import { MainAdminComponent } from './components/admin/main-admin/main-admin.com
     InputDateComponent,
     InputSelectComponent,
     HeaderComponent,
+<<<<<<< HEAD
     MainAdminComponent,
+=======
+    GeneralSnackBarComponent
+>>>>>>> d61398409d1c9ff88aff000616bd4497b648df9d
   ],
   imports: [
     BrowserModule,
@@ -98,7 +107,9 @@ import { MainAdminComponent } from './components/admin/main-admin/main-admin.com
     ReactiveFormsModule,
     MatRadioModule,
     MatSliderModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    MatDatepickerModule,
+    MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]

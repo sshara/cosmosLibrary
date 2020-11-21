@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+interface Option {
+  id: number;
+  name: string;
+}
 
 @Component({
   selector: 'app-input-select',
@@ -7,7 +13,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputSelectComponent implements OnInit {
 
-  constructor() { }
+  @Input() headerText: string;
+  @Input() control: FormControl;
+  @Input() options: Option[];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
