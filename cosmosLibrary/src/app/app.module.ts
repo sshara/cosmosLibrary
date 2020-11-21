@@ -46,6 +46,7 @@ import { InputImageComponent } from './components/system/input-image/input-image
 import { InputDateComponent } from './components/system/input-date/input-date.component';
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
 import { environment } from '../environments/environment';
+import { HeaderComponent } from './components/system/header/header.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { environment } from '../environments/environment';
     InputTextComponent,
     InputImageComponent,
     InputDateComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
