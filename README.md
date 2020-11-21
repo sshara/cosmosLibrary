@@ -1,7 +1,7 @@
 # cosmosLibrary
 proyecto de laboratorio de software
 
-Yo edwin Galeano, me declaro total y absulutamente homosexual.
+
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -23,4 +23,3 @@ Yo edwin Galeano, me declaro total y absulutamente homosexual.
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
-
