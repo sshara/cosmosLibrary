@@ -37,10 +37,24 @@ import {MatSliderModule} from '@angular/material/slider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/session/login/login.component';
+import { SignupComponent } from './components/session/signup/signup.component';
+import { RecoverPasswordComponent } from './components/session/recover-password/recover-password.component';
+import { InputTextComponent } from './components/system/input-text/input-text.component';
+import { InputImageComponent } from './components/system/input-image/input-image.component';
+import { InputDateComponent } from './components/system/input-date/input-date.component';
+import { InputSelectComponent } from './components/system/input-select/input-select.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    RecoverPasswordComponent,
+    InputTextComponent,
+    InputImageComponent,
+    InputDateComponent,
+    InputSelectComponent
   ],
   imports: [
     BrowserModule,

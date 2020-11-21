@@ -1,0 +1,14 @@
+<div class="form-group1 disposition-input">
+    <label class="text-dark mb-0">{{headerText}}</label>
+    <input class="form-control1" [type]="inputType" [formControl]="control"
+    [ngClass]="{'is-invalid': showError()}">
+    <div *ngIf="showError()" class="invalid-feedback">
+        <p *ngIf="control.errors.required">{{headerText}} es requerido</p>
+        <p *ngIf="control.errors.minlength">Has ingresado {{control.errors.minlength.actualLength}} carácteres, 
+            pero se requieren {{control.errors.minlength.requiredLength}} carácteres</p>
+        <p *ngIf="control.errors.maxlength">Has ingresado {{control.errors.maxlength.actualLength}} carácteres,
+            pero solo se permiten {{control.errors.maxlength.requiredLength}} carácteres</p>
+        <p *ngIf="control.errors.email">Este no es un correo válido</p>
+        <p *ngIf="control.errors.pattern">Este no es un texto válido</p>
+    </div>
+</div>
