@@ -24,9 +24,23 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    let subscription = this._sessionService.login(this.loginForm.value).subscribe(user =>{
+    console.log(this.loginForm.value);
+    let {username, password} = this.loginForm.value;
+    let subscription = this._sessionService.login(username).subscribe(user =>{
       console.log(user);
-    })
+      if(!user){
+        console.log('El usuario no existe');
+        subscription.unsubscribe();
+        return;
+      }
+      if(password === user.password){
+        console.log('success');
+      }
+      else{
+        console.log('Contraseña Inválida');
+      }
+      subscription.unsubscribe();
+    });
   }
 
   goTo(route:string){

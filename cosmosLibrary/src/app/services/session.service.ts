@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
+  usersRef: AngularFireList<any>;
+  userRef: AngularFireObject<any>;
+
   constructor(
-    private firestore: AngularFirestore
+    private firebase: AngularFireDatabase
   ) { }
 
-  login(data:any){
-    let {username} = data;
-    return this.firestore.collection('users').doc(username).snapshotChanges();
+  login(username:string){
+    this.userRef = this.firebase.object(`users/${username}`);
+    return this.userRef.valueChanges();
   }
 }
