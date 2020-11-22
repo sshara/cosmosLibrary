@@ -48,11 +48,8 @@ import { InputDateComponent } from './components/system/input-date/input-date.co
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
-<<<<<<< HEAD
 import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
-=======
 import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
->>>>>>> d61398409d1c9ff88aff000616bd4497b648df9d
 
 @NgModule({
   declarations: [
@@ -65,11 +62,8 @@ import { GeneralSnackBarComponent } from './components/system/general-snack-bar/
     InputDateComponent,
     InputSelectComponent,
     HeaderComponent,
-<<<<<<< HEAD
     MainAdminComponent,
-=======
     GeneralSnackBarComponent
->>>>>>> d61398409d1c9ff88aff000616bd4497b648df9d
   ],
   imports: [
     BrowserModule,
