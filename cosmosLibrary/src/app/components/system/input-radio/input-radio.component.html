@@ -1,0 +1,9 @@
+<label id="example-radio-group-label">{{headerText}}</label>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [formControl]="control">
+  <mat-radio-button class="example-radio-button" *ngFor="let option of options" [value]="option">
+    {{option}}
+  </mat-radio-button>
+</mat-radio-group>

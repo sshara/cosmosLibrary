@@ -48,8 +48,20 @@ import { InputDateComponent } from './components/system/input-date/input-date.co
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
+import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
 import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
 import { HomeComponent } from './components/main/home/home.component';
+import { ProfileComponent } from './components/client/profile/profile.component';
+import { NewsComponent } from './components/client/news/news.component';
+import { ShoppingCartComponent } from './components/client/shopping-cart/shopping-cart.component';
+import { AddBookComponent } from './components/admin/books/add-book/add-book.component';
+import { ManageBookComponent } from './components/admin/books/manage-book/manage-book.component';
+import { EditBookComponent } from './components/admin/books/edit-book/edit-book.component';
+import { DeleteBookComponent } from './components/admin/books/delete-book/delete-book.component';
+import { ChangeAdminPasswordComponent } from './components/admin/misc/change-admin-password/change-admin-password.component';
+import { HistoricalSoldOutComponent } from './components/admin/misc/historical-sold-out/historical-sold-out.component';
+import { ManageAdminComponent } from './components/root/administrators/manage-admin/manage-admin.component';
+import { InputRadioComponent } from './components/system/input-radio/input-radio.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +75,20 @@ import { HomeComponent } from './components/main/home/home.component';
     InputSelectComponent,
     HeaderComponent,
     GeneralSnackBarComponent,
-    HomeComponent
+    HomeComponent,
+    MainAdminComponent,
+    GeneralSnackBarComponent,
+    ProfileComponent,
+    NewsComponent,
+    ShoppingCartComponent,
+    AddBookComponent,
+    ManageBookComponent,
+    EditBookComponent,
+    DeleteBookComponent,
+    ChangeAdminPasswordComponent,
+    HistoricalSoldOutComponent,
+    ManageAdminComponent,
+    InputRadioComponent
   ],
   imports: [
     BrowserModule,
