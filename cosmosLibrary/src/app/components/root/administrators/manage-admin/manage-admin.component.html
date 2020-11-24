@@ -1,1 +1,36 @@
-<p>manage-admin works!</p>
+<div class="container-fluid bg-color">
+    <app-header></app-header>
+
+    <div class="row">
+        <div class="col-sm-7 col-md-7 col-lg-4 mx-auto">
+            <div class="card-body">
+                <form class="mt-2" #logForm= "ngForm" (ngSubmit)= "manageAdmin()" [formGroup]="manageForm">
+
+                    <app-input-text 
+                    [headerText]="'Nombre de usuario admin'" 
+                    [inputType]="'text'" 
+                    [control]="manageForm.get('username')"
+                    ></app-input-text>
+
+                    <app-input-text 
+                    [headerText]="'Contraseña'" 
+                    [inputType]="'password'" 
+                    [control]="manageForm.get('password')"
+                    ></app-input-text>
+
+                    <app-input-text 
+                    [headerText]="'Confirmación de contraseña'" 
+                    [inputType]="'password'" 
+                    [control]="manageForm.get('confimationPassword')"
+                    ></app-input-text>
+                    
+                    <div class="disposition1 mt-2">
+                        <button class="custom-large-btn" type="submit" [disabled]="manageForm.invalid">Crear admin</button>
+                        <button class="custom-large-btn" type="submit" [disabled]="manageForm.invalid">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
