@@ -1,6 +1,6 @@
 <div class="form-group1 disposition-input">
     <label class="text-secondary mb-0">{{headerText}}</label>
-    <select id="select" class="form-control1" [formControl]="control">
+    <select class="form-control1" [formControl]="control">
       <option class="option" *ngFor="let opt of options" [value]="opt.id">
         {{opt.name}}
       </option>

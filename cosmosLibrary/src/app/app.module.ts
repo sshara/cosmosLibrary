@@ -60,6 +60,7 @@ import { DeleteBookComponent } from './components/admin/books/delete-book/delete
 import { ChangeAdminPasswordComponent } from './components/admin/misc/change-admin-password/change-admin-password.component';
 import { HistoricalSoldOutComponent } from './components/admin/misc/historical-sold-out/historical-sold-out.component';
 import { ManageAdminComponent } from './components/root/administrators/manage-admin/manage-admin.component';
+import { InputRadioComponent } from './components/system/input-radio/input-radio.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { ManageAdminComponent } from './components/root/administrators/manage-ad
     DeleteBookComponent,
     ChangeAdminPasswordComponent,
     HistoricalSoldOutComponent,
-    ManageAdminComponent
+    ManageAdminComponent,
+    InputRadioComponent
   ],
   imports: [
     BrowserModule,

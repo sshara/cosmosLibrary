@@ -63,11 +63,20 @@
                     [headerText]="'Contraportada'"
                     [control]="createForm.get('back_image')" 
                     ></app-input-image>
+
+                    <app-input-radio
+                    [headerText]="'Estado'"
+                    [control]="createForm.get('status')" 
+                    [options]="optionsStatus" 
+                    ></app-input-radio>
+
+                    <mat-checkbox [formControl]="createForm.get('on_news')">Publicar en noticias</mat-checkbox>
                     
                     <div class="disposition1 mt-2">
                         <button class="custom-large-btn" type="submit" [disabled]="createForm.invalid">Ingresar</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
