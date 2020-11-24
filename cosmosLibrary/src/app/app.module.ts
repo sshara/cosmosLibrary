@@ -49,6 +49,7 @@ import { InputSelectComponent } from './components/system/input-select/input-sel
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
 import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
+import { HomeComponent } from './components/main/home/home.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { GeneralSnackBarComponent } from './components/system/general-snack-bar/
     InputDateComponent,
     InputSelectComponent,
     HeaderComponent,
-    GeneralSnackBarComponent
+    GeneralSnackBarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
