@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AdminService } from 'src/app/services/admin.service';
+import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -9,17 +11,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class EditBookComponent implements OnInit {
 
   updateForm = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
-    author: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(50)]),
-    publish_year: new FormControl('', [Validators.required]),
-    topic: new FormControl('',[Validators.required]),
-    pages_number: new FormControl('',[Validators.required]),
-    editorial: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]),
-    language: new FormControl('', [Validators.required]),
-    isbn: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
-    front_image: new FormControl('', [Validators.required]),
-    back_image: new FormControl('', [Validators.required]),
-    status: new FormControl('', [Validators.required]),
+    title: new FormControl('', [Validators.minLength(1), Validators.maxLength(50)]),
+    author: new FormControl('', [Validators.minLength(1), Validators.maxLength(50)]),
+    publish_year: new FormControl(''),
+    topic: new FormControl(''),
+    pages_number: new FormControl(''),
+    editorial: new FormControl('', [Validators.minLength(1), Validators.maxLength(30)]),
+    language: new FormControl(''),
+    front_image: new FormControl(''),
+    back_image: new FormControl(''),
+    status: new FormControl(''),
     on_news: new FormControl(false),
   })
 
@@ -27,20 +28,34 @@ export class EditBookComponent implements OnInit {
   public optionsLanguage:any[];
   public optionsStatus:string[];
 
-  constructor() { 
-    this.optionsTopic = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ]
-    this.optionsLanguage = [{id: 0, name: 'english'}, { id: 1, name: 'español'}, { id: 2, name: 'francaise'} ]
+  constructor(
+    private _generalService:GeneralService,
+    private _adminService:AdminService
+  ) { 
+    this.optionsTopic = [{id: 'RMC', name: 'Romance'}, { id: 'REA', name: 'Realismo'}, 
+    { id: 'SUR', name: 'Surrealismo'}, { id: 'RMA', name: 'Realismo Mágico'}, 
+    { id: 'CMD', name: 'Comedia'}, { id: 'DRM', name: 'Drama'}, { id: 'TER', name: 'Terror'}, 
+    { id: 'SUS', name: 'Suspenso'}, { id: 'TRA', name: 'Tragedia'}, { id: 'CFC', name: 'Ciencia Ficción'}, 
+    { id: 'FAN', name: 'Fantasía'}, { id: 'MIS', name: 'Misterio'} ];
+    this.optionsLanguage = [{id: 0, name: 'English'}, { id: 1, name: 'Español'}, 
+    { id: 2, name: 'Française'}, { id: 3, name: 'Deutsche'}, { id: 4, name: 'Português'}, { id: 5, name: '中文'} ]
     this.optionsStatus = ['Nuevo', 'Usado'];
   }
 
   ngOnInit(): void {
+    this.getBookData();
+  }
+
+  getBookData(){
+    let subsciption = this._adminService.getBookData().subscribe(book => {
+      console.log(book);
+      this.updateForm.setValue(this._generalService.assertInfo(book, this.updateForm));
+      subsciption.unsubscribe();
+    })
   }
 
   updateBook(){
-    console.log(this.updateForm.value , this.updateForm.get('on_news').value)
-    if(this.updateForm.get('on_news').value){
-      console.log('published en news');
-    }
+    this._adminService.updateBook(this.updateForm.value);
   }
 
 }

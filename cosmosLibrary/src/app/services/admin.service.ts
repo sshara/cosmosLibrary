@@ -25,6 +25,8 @@ export class AdminService {
     delete data.front_image;
     delete data.back_image;
 
+    data.publish_year = data.publish_year.toString();
+
     this.bookRef = this.firebase.object(`books/${isbn}`);
     let subscriptor = this.bookRef.valueChanges().subscribe(book =>{
       if(book){
@@ -100,10 +102,16 @@ export class AdminService {
   }
 
   updateBook(data:any){
-    let {isbn, front_image, back_image} = data;
+    let { front_image, back_image} = data;
     
     delete data.front_image;
     delete data.back_image;
+
+    let { isbn } = this._generalService.loadInfo('book');
+
+    data = this._generalService.deleteUnchanged(data);
+
+    data.publish_year = data.publish_year.toString();
     
     this.bookRef = this.firebase.object(`books/${isbn}`);
     this.bookRef.update(data)
@@ -116,5 +124,28 @@ export class AdminService {
       this._generalService.openSnackBar({message:'Ocurrió un error al actualizar el libro.'});
     });
       
+  }
+
+  getBooks(){
+    this.booksRef = this.firebase.list('/books');
+    return this.booksRef.valueChanges();
+  }
+
+  getBookData(){
+    let {isbn } = this._generalService.loadInfo('book');
+    this.bookRef = this.firebase.object(`books/${isbn}`);
+    return this.bookRef.valueChanges();
+  }
+
+  deleteBook(data:any){
+    let {isbn} = data;
+    this.bookRef = this.firebase.object(`books/${isbn}`);
+    this.bookRef.remove()
+    .then(ok => {
+      this._generalService.openSnackBar({message:'Se ha eliminado el libro satisfactoriamente.'})
+    })
+    .catch(err=>{
+      this._generalService.openSnackBar({message:'Ocurrió un error al eliminar el libro.'})
+    })
   }
 }

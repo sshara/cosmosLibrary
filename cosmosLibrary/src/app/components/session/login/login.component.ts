@@ -40,7 +40,11 @@ export class LoginComponent implements OnInit {
         if(user.role === 'root'){
           this.goTo('manage-admin');
         }else if(user.role === 'admin'){
-          this.goTo('main-admin')
+          if(user.email){
+            this.goTo('main-admin');
+          }else{
+            this.goTo('update-admin');
+          }
         }else if(user.role === 'client'){
           this.goTo('profile-client');
         }

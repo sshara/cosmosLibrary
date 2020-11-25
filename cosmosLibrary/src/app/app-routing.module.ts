@@ -22,9 +22,9 @@ const routes: Routes = [
   {path: 'add-book', canActivate:[NavigationGuard], component:AddBookComponent},
   {path: 'manage-admin', canActivate:[NavigationGuard], component:ManageAdminComponent},
   {path: 'edit-book', canActivate:[NavigationGuard], component:EditBookComponent},
-  {path: 'manage-book', canActivate:[NavigationGuard], component:ManageBookComponent},
+  {path: 'manage-books', canActivate:[NavigationGuard], component:ManageBookComponent},
   {path: 'historical-sold-out', canActivate:[NavigationGuard], component:HistoricalSoldOutComponent},
-  {path: 'change-admin-password', canActivate:[NavigationGuard], component:ChangeAdminPasswordComponent},
+  {path: 'update-admin', canActivate:[NavigationGuard], component:ChangeAdminPasswordComponent},
   {path: 'profile-client', canActivate:[NavigationGuard], component:ProfileComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'login'}

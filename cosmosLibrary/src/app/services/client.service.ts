@@ -27,6 +27,9 @@ export class ClientService {
   updateProfileData(data:any){
     let { username } = this._generalService.loadInfo('identity');
     data.birthdate = data.birthdate.toString();
+
+    data = this._generalService.deleteUnchanged(data);
+    
     if(data.password !== data.confirmationPassword || !data.password || !data.confirmationPassword){
       data = this._generalService.deletePasswords(data);
     }

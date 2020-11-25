@@ -47,12 +47,6 @@
             [options]="optionsLanguage" 
             ></app-input-select>
 
-            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
-            [headerText]="'ISBN'" 
-            [inputType]="'text'" 
-            [control]="updateForm.get('isbn')"
-            ></app-input-text>
-
             <mat-checkbox class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto" [formControl]="updateForm.get('on_news')">Publicar en noticias</mat-checkbox>
 
             <app-input-radio class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/services/system/general.service';
 import { DeleteBookComponent } from '../delete-book/delete-book.component';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-manage-book',
@@ -11,45 +12,34 @@ export class ManageBookComponent implements OnInit {
 
   public books:any[];
 
-  constructor(private _generalService:GeneralService) { 
-    this.books = [
-      {
-        front_image:'https://compote.slate.com/images/73f0857e-2a1a-4fea-b97a-bd4c241c01f5.jpg', 
-        title: 'Patata',
-        author:'Jonh Wick',
-        language:'Francés',
-        topic:'Drama',
-        editorial:'Los enanitos azules'
-      },
-      {
-        front_image:'https://i.pinimg.com/736x/e3/32/3f/e3323fc80a203239e2a28ae23f83260a.jpg', 
-        title: 'Patata',
-        author:'Jonh Wick',
-        language:'Francés',
-        topic:'Drama',
-        editorial:'Los enanitos azules'
-      },
-      {
-        front_image:'https://i0.wp.com/bestlifeonline.com/wp-content/uploads/2019/03/baby-tiger.jpg', 
-        title: 'Patata',
-        author:'Jonh Wick',
-        language:'Francés',
-        topic:'Drama',
-        editorial:'Los enanitos azules'
-      }
-    ];
+  constructor(
+    private _generalService:GeneralService,
+    private _adminService:AdminService
+  ) { 
+    this.books = [];
   }
 
   ngOnInit(): void {
+    this.getBooks();
+  }
+
+  getBooks(){
+    let subscription = this._adminService.getBooks().subscribe(books => {
+      this.books = books;
+      subscription.unsubscribe();
+    })
   }
 
   editBook(book:any){
+    let {isbn, title} = book;
+    console.log(book);
+    this._generalService.saveInfo('book', {isbn, title});
     this.goTo('edit-book');
   }
 
   deleteBook(book:any){
     let ref = this._generalService.openDialog(DeleteBookComponent);
-    ref.afterClosed().subscribe(result => {if(result) console.log('inserte aqui servicio')});
+    ref.afterClosed().subscribe(result => {if(result) {this._adminService.deleteBook(book); this.getBooks();}});
   }
 
   goTo(route:string){

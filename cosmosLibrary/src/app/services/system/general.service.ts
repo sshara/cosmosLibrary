@@ -64,7 +64,7 @@ export class GeneralService {
         data[key] = '';
       }
 
-      if(key.toLowerCase().includes('date')){
+      if(key.toLowerCase().includes('date') || key.toLowerCase().includes('year')){
         data[key] = new Date(data[key]);
       }
     }
@@ -79,6 +79,15 @@ export class GeneralService {
       }
     }
 
+    return data;
+  }
+
+  deleteUnchanged(data:any){
+    for(let key of Object.keys(data)){
+      if(!data[key]){
+        delete data[key];
+      }
+    }
     return data;
   }
 
