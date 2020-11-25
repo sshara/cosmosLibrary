@@ -34,13 +34,15 @@ export class LoginComponent implements OnInit {
         return;
       }
       if(password === user.password){
-        console.log(user.role);
+        let identity = {username:user.username, role:user.role};
+        this._generalService.saveInfo('identity', identity);
+        console.log(this._generalService.loadInfo('identity'))
         if(user.role === 'root'){
           this.goTo('manage-admin');
         }else if(user.role === 'admin'){
           this.goTo('main-admin')
         }else if(user.role === 'client'){
-          this.goTo('');
+          this.goTo('profile-client');
         }
       }
       else{
