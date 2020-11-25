@@ -36,6 +36,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
+import { FilterByPipe } from './pipes/filter-by.pipe';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -64,6 +66,7 @@ import { ManageAdminComponent } from './components/root/administrators/manage-ad
 import { InputRadioComponent } from './components/system/input-radio/input-radio.component';
 import { HomeGuestComponent } from './components/main/home-guest/home-guest.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +93,8 @@ import { HomeGuestComponent } from './components/main/home-guest/home-guest.comp
     HistoricalSoldOutComponent,
     ManageAdminComponent,
     InputRadioComponent,
-    HomeGuestComponent
+    HomeGuestComponent,
+    FilterByPipe,
   ],
   imports: [
     BrowserModule,
