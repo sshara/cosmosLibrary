@@ -10,7 +10,7 @@ export class ManageAdminComponent implements OnInit {
 
   manageForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)])
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]),
   })
 
   constructor() { }
