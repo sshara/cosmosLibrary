@@ -1,1 +1,88 @@
-<p>profile works!</p>
+<div class="container-fluid bg-color">
+    <app-header></app-header>
+
+    <div class="container py-5">
+        <form class="row mt-2" #updateProfileForm= "ngForm" (ngSubmit)= "updateProfile()" [formGroup]="updateprofileForm">
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Nombre'" 
+            [inputType]="'text'" 
+            [control]="updateprofileForm.get('name')"
+            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Apellidos'" 
+            [inputType]="'text'" 
+            [control]="updateprofileForm.get('lastname')"
+            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+
+            <app-input-date class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Fecha de nacimiento'" 
+            [control]="updateprofileForm.get('birthdate')"></app-input-date>
+
+            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'país'"
+            [control]="updateprofileForm.get('country')"
+            [options]="countryOptions"></app-input-select>
+
+            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Estado/Dep'"
+            [control]="updateprofileForm.get('state')"
+            [options]="stateOptions"></app-input-select>
+
+            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'ciudad'"
+            [control]="updateprofileForm.get('city')"
+            [options]="cityOptions"></app-input-select>
+
+            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Género'"
+            [control]="updateprofileForm.get('gender')"
+            [options]="genderOptions"></app-input-select>
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'e-mail'" 
+            [inputType]="'email'" 
+            [control]="updateprofileForm.get('email')"
+            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+
+            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Temas de interes'"
+            [control]="updateprofileForm.get('topic')"
+            [options]="topicOptions"></app-input-select>
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Usuario'" 
+            [inputType]="'text'" 
+            [control]="updateprofileForm.get('username')"
+            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Contraseña actual'" 
+            [inputType]="'password'" 
+            [control]="updateprofileForm.get('oldPassword')"></app-input-text>
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
+            [headerText]="'Nueva contraseña'" 
+            [inputType]="'password'" 
+            [control]="updateprofileForm.get('password')"></app-input-text>
+
+            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-1"
+            [headerText]="'Confirmar Contraseña'" 
+            [inputType]="'password'" 
+            [control]="updateprofileForm.get('confirmationPassword')"
+            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+
+            <div *ngIf="isFormError()" class="d-flex justify-content-center col-lg-12 col-md-12 col-sm-12 m-0 alert alert-danger" role="alert">
+                <p *ngIf="signupForm.errors.noMatchingPassword">Las contraseñas no coinciden.</p>
+            </div>
+            
+            <div class="d-flex justify-content-center col-lg-12 col-md-12 col-sm-12 m-0">
+                <button class="custom-large-btn" type="submit" [disabled]="updateprofileForm.invalid">Actualizar</button>
+                <button class="btn-light custom-large-btn" type="button" (click)="goTo('home')">Cancelar</button>
+            </div>
+        
+        </form>
+    </div>
+</div>
+
