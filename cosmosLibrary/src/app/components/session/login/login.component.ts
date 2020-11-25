@@ -12,7 +12,7 @@ import { GeneralSnackBarComponent } from '../../system/general-snack-bar/general
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25), Validators.pattern(/^([^\.\#\$\,\[\]])+$/)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
   login(){
     let {username, password} = this.loginForm.value;
     let subscription = this._sessionService.logIn(username).subscribe(user =>{
-      console.log(user);
       if(!user){
         let message = 'El usuario no existe';
         this._generalService.openSnackBar({message});
@@ -36,6 +35,13 @@ export class LoginComponent implements OnInit {
       }
       if(password === user.password){
         console.log(user.role);
+        if(user.role === 'root'){
+          this.goTo('manage-admin');
+        }else if(user.role === 'admin'){
+          this.goTo('main-admin')
+        }else if(user.role === 'client'){
+          this.goTo('');
+        }
       }
       else{
         let message = 'Contraseña Inválida';

@@ -32,15 +32,16 @@ export class ProfileComponent implements OnInit {
     confirmationPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
   }, {validators: this._passwordMatchValidator.validate})
 
-  constructor(private _generalService:GeneralService,
-              private _passwordMatchValidator: PasswordMatchVaildator) 
-              { 
-                this.countryOptions = [];
-                this.stateOptions = [];
-                this.cityOptions = [];
-                this.genderOptions = [];
-                this.topicOptions = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ];
-              }
+  constructor(
+    private _generalService:GeneralService,
+    private _passwordMatchValidator: PasswordMatchVaildator
+  ){ 
+    this.countryOptions = [];
+    this.stateOptions = [];
+    this.cityOptions = [];
+    this.genderOptions = [];
+    this.topicOptions = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ];
+  }
 
   ngOnInit(): void {
   }

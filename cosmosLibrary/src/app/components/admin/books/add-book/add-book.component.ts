@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-add-book',
@@ -27,7 +28,9 @@ export class AddBookComponent implements OnInit {
   public optionsLanguage:any[];
   public optionsStatus:string[];
 
-  constructor() { 
+  constructor(
+    private _adminService:AdminService
+  ) { 
     this.optionsTopic = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ]
     this.optionsLanguage = [{id: 0, name: 'english'}, { id: 1, name: 'español'}, { id: 2, name: 'francaise'} ]
     this.optionsStatus = ['Nuevo', 'Usado'];
@@ -37,10 +40,7 @@ export class AddBookComponent implements OnInit {
   }
 
   createBook(){
-    console.log(this.createForm.value , this.createForm.get('on_news').value)
-    if(this.createForm.get('on_news').value){
-      console.log('published en news');
-    }
+    this._adminService.createBook(this.createForm.value);
   }
 
 }

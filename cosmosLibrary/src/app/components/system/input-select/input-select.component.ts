@@ -15,7 +15,7 @@ export class InputSelectComponent implements OnInit {
 
   @Input() headerText: string;
   @Input() control: FormControl;
-  @Input() options: Option[];
+  @Input() options: any[];
 
   constructor() {
   }
