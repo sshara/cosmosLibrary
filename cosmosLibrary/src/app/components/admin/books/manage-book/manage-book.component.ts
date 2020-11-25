@@ -48,7 +48,8 @@ export class ManageBookComponent implements OnInit {
   }
 
   deleteBook(book:any){
-    this._generalService.openDialog(DeleteBookComponent);
+    let ref = this._generalService.openDialog(DeleteBookComponent);
+    ref.afterClosed().subscribe(result => {if(result) console.log('inserte aqui servicio')});
   }
 
   goTo(route:string){

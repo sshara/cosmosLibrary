@@ -51,7 +51,11 @@ export class SignupComponent implements OnInit , OnDestroy {
     this.dniOptions = [{id:'CC', name:'Cédula de Ciudadania'}, {id:'PA', name:'Pasaporte'}, {id:'TI', name:'Tarjeta de Identidad'}, {id:'RC', name:'Registro Civil'}, {id:'CE', name:'Cédula de Extranjeria'}];
     this.genderOptions = [{id:'F', name:'Femenino'}, {id:'M', name:'Masculino'}, {id:'O', name:'Otro'}];
 
-    this.topicOptions = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ];
+    this.topicOptions = [{id: 'RMC', name: 'Romance'}, { id: 'REA', name: 'Realismo'}, 
+    { id: 'SUR', name: 'Surrealismo'}, { id: 'RMA', name: 'Realismo Mágico'}, 
+    { id: 'CMD', name: 'Comedia'}, { id: 'DRM', name: 'Drama'}, { id: 'TER', name: 'Terror'}, 
+    { id: 'SUS', name: 'Suspenso'}, { id: 'TRA', name: 'Tragedia'}, { id: 'CFC', name: 'Ciencia Ficción'}, 
+    { id: 'FAN', name: 'Fantasía'}, { id: 'MIS', name: 'Misterio'} ];
 
     this.countryOptions = countries.countries;
 

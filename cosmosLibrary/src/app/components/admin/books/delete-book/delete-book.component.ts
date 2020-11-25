@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/Dialog';
 
 @Component({
   selector: 'app-delete-book',
@@ -7,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteBookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _dialogRef: MatDialogRef<DeleteBookComponent>) { }
 
   ngOnInit(): void {
   }
 
-  accept(){}
+  accept(){
+    this._dialogRef.close(true);
+  }
 
 }
