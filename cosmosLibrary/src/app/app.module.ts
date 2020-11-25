@@ -50,6 +50,7 @@ import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
 import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
 import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
+import { HomeComponent } from './components/main/home/home.component';
 import { ProfileComponent } from './components/client/profile/profile.component';
 import { NewsComponent } from './components/client/news/news.component';
 import { ShoppingCartComponent } from './components/client/shopping-cart/shopping-cart.component';
@@ -73,6 +74,8 @@ import { InputRadioComponent } from './components/system/input-radio/input-radio
     InputDateComponent,
     InputSelectComponent,
     HeaderComponent,
+    GeneralSnackBarComponent,
+    HomeComponent,
     MainAdminComponent,
     GeneralSnackBarComponent,
     ProfileComponent,
