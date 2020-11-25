@@ -44,5 +44,51 @@ export class GeneralService {
     return dialogRef;
   }
 
+  assertInfo(data:any, form:any){
+    let formKeys = Object.keys(form.value);
+    for(let key of Object.keys(data)){
+      if(! formKeys.includes(key)){
+        delete data[key];
+      }
+    }
+
+    formKeys = Object.keys(data);
+    for(let key of Object.keys(form.value)){
+      if(! formKeys.includes(key)){
+        data[key] = '';
+      }
+    }
+
+    for(let key of Object.keys(data)){
+      if(key.toLowerCase().includes('password')){
+        data[key] = '';
+      }
+
+      if(key.toLowerCase().includes('date')){
+        data[key] = new Date(data[key]);
+      }
+    }
+
+    return data;
+  }
+
+  deletePasswords(data:any){
+    for(let key of Object.keys(data)){
+      if(key.toLowerCase().includes('password')){
+        delete data[key];
+      }
+    }
+
+    return data;
+  }
+
+  saveInfo(name:string, info:any){
+    localStorage.setItem(name, JSON.stringify(info));
+  }
+
+  loadInfo(name:string) :any {
+    return JSON.parse(localStorage.getItem(name));
+  }
+
 
 }

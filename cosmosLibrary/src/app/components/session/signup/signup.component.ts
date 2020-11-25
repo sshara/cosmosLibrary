@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/services/system/general.service';
 import { PasswordMatchVaildator } from 'src/app/validators/password-match.validator';
+import { SessionService } from 'src/app/services/session.service';
 
 import countries from 'src/assets/json/countries.json';
 import states from 'src/assets/json/states.json';
 import cities from 'src/assets/json/cities.json';
-import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-signup',
@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit , OnDestroy {
   ) 
   {
     this.dniOptions = [{id:'CC', name:'Cédula de Ciudadania'}, {id:'PA', name:'Pasaporte'}, {id:'TI', name:'Tarjeta de Identidad'}, {id:'RC', name:'Registro Civil'}, {id:'CE', name:'Cédula de Extranjeria'}];
-    this.genderOptions = ['Femenino', 'Masculino', 'Otro'];
+    this.genderOptions = [{id:'F', name:'Femenino'}, {id:'M', name:'Masculino'}, {id:'O', name:'Otro'}];
 
     this.topicOptions = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ];
 
