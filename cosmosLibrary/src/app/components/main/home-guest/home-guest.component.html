@@ -5,6 +5,10 @@
             <mat-icon class="position" [inline]=true>search</mat-icon>
             <input class="form-control-2" type="text" name = "search" (keyup)="search($event)" placeholder="Titulo, autor, editorial..." [(ngModel)] = "parameter">
         </div>
-        <button class="custom-large-btn" type="button" (click)="goTo('profile-client')">Editar perfil</button>
+        <div class="d-flex flex-md-row justify-content-center col-lg-12 col-md-12 col-sm-12 m-0 disposition0">
+            <button class="custom-large-btn mr-sm-4" type="button" (click)="goTo('login')">Iniciar sesion</button>
+            <button class="custom-large-btn" type="button" (click)="goTo('signup')">Crear cuenta</button>
+        </div>
+        
     </div>
 </div>

@@ -2,19 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-home-guest',
+  templateUrl: './home-guest.component.html',
+  styleUrls: ['./home-guest.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeGuestComponent implements OnInit {
 
   public parameter:string;
 
   constructor(private _generalService:GeneralService) {
     this.parameter = '';
    }
-
-   ngOnInit(): void {
+  ngOnInit(): void {
   }
 
   search(event:any){

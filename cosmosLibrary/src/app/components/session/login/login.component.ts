@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             this.goTo('update-admin');
           }
         }else if(user.role === 'client'){
-          this.goTo('profile-client');
+          this.goTo('home-client');
         }
       }
       else{

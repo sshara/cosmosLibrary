@@ -26,7 +26,6 @@ export class ChangeAdminPasswordComponent implements OnInit {
     gender: new FormControl('',[Validators.required]),
     email: new FormControl('', [Validators.required, Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
     topic: new FormControl('',[Validators.required]),
-    username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]),
     oldPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmationPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
