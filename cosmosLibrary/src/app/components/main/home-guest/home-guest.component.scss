@@ -18,6 +18,16 @@ $gray-3:#363636;
 
 
 
+@include media-breakpoint-only(xs){
+    .disposition0{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom:5%;
+    }
+}
+
 @include media-breakpoint-between(xs, sm) {
 
 

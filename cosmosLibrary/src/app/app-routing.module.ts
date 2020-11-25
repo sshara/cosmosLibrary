@@ -13,6 +13,8 @@ import { SignupComponent } from './components/session/signup/signup.component';
 import { NavigationGuard } from './services/system/navigation.guard';
 import { ManageAdminComponent } from './components/root/administrators/manage-admin/manage-admin.component';
 import { ProfileComponent } from './components/client/profile/profile.component';
+import { HomeComponent } from './components/main/home/home.component';
+import { HomeGuestComponent } from './components/main/home-guest/home-guest.component';
 
 const routes: Routes = [
   {path: 'login', canActivate:[NavigationGuard], component:LoginComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: 'historical-sold-out', canActivate:[NavigationGuard], component:HistoricalSoldOutComponent},
   {path: 'change-admin-password', canActivate:[NavigationGuard], component:ChangeAdminPasswordComponent},
   {path: 'profile-client', canActivate:[NavigationGuard], component:ProfileComponent},
+  {path: 'home-client', canActivate:[NavigationGuard], component:HomeComponent},
+  {path: 'home-guest', canActivate:[NavigationGuard], component:HomeGuestComponent},
 
   {path: '**', pathMatch: 'full', redirectTo: 'login'}
 ];

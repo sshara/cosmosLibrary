@@ -62,6 +62,7 @@ import { ChangeAdminPasswordComponent } from './components/admin/misc/change-adm
 import { HistoricalSoldOutComponent } from './components/admin/misc/historical-sold-out/historical-sold-out.component';
 import { ManageAdminComponent } from './components/root/administrators/manage-admin/manage-admin.component';
 import { InputRadioComponent } from './components/system/input-radio/input-radio.component';
+import { HomeGuestComponent } from './components/main/home-guest/home-guest.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { InputRadioComponent } from './components/system/input-radio/input-radio
     ChangeAdminPasswordComponent,
     HistoricalSoldOutComponent,
     ManageAdminComponent,
-    InputRadioComponent
+    InputRadioComponent,
+    HomeGuestComponent
   ],
   imports: [
     BrowserModule,
