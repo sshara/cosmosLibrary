@@ -2,88 +2,82 @@
 <div class="container-fluid bg-color">
     <app-header></app-header>
 
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            <div class="card-body">
-                <form class="mt-2" #crtForm= "ngForm" (ngSubmit)= "createBook()" [formGroup]="createForm">
+    <div class="container py-5">
+        <form class="row mt-2" #crtForm= "ngForm" (ngSubmit)= "createBook()" [formGroup]="createForm">
 
-                    <app-input-text 
-                    [headerText]="'Título'" 
-                    [inputType]="'text'" 
-                    [control]="createForm.get('title')"
-                    ></app-input-text>
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Título'" 
+            [inputType]="'text'" 
+            [control]="createForm.get('title')"
+            ></app-input-text>
 
-                    <app-input-text 
-                    [headerText]="'Autor'" 
-                    [inputType]="'text'" 
-                    [control]="createForm.get('author')"
-                    ></app-input-text>
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Autor'" 
+            [inputType]="'text'" 
+            [control]="createForm.get('author')"
+            ></app-input-text>
 
-                    <app-input-date 
-                    [headerText]="'Fecha de publicación'" 
-                    [control]="createForm.get('publish_year')"
-                    ></app-input-date>
+            <app-input-date class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Fecha de publicación'" 
+            [control]="createForm.get('publish_year')"
+            ></app-input-date>
 
-                    <app-input-select
-                    [headerText]="'Género'"
-                    [control]="createForm.get('topic')" 
-                    [options]="optionsTopic" 
-                    ></app-input-select>
+            <app-input-select class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Género'"
+            [control]="createForm.get('topic')" 
+            [options]="optionsTopic" 
+            ></app-input-select>
 
-                    <app-input-text 
-                    [headerText]="'Páginas'" 
-                    [inputType]="'number'" 
-                    [control]="createForm.get('pages_number')"
-                    ></app-input-text>
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Páginas'" 
+            [inputType]="'number'" 
+            [control]="createForm.get('pages_number')"
+            ></app-input-text>
 
-                    <app-input-text 
-                    [headerText]="'Editorial'" 
-                    [inputType]="'text'" 
-                    [control]="createForm.get('editorial')"
-                    ></app-input-text>
 
-                    <app-input-select
-                    [headerText]="'Idioma'"
-                    [control]="createForm.get('language')" 
-                    [options]="optionsLanguage" 
-                    ></app-input-select>
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Editorial'" 
+            [inputType]="'text'" 
+            [control]="createForm.get('editorial')"
+            ></app-input-text>
 
-                    <app-input-text 
-                    [headerText]="'ISBN'" 
-                    [inputType]="'text'" 
-                    [control]="createForm.get('isbn')"
-                    ></app-input-text>
+            <app-input-select class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Idioma'"
+            [control]="createForm.get('language')" 
+            [options]="optionsLanguage" 
+            ></app-input-select>
 
-                    <app-input-image
-                    [headerText]="'Portada'"
-                    [control]="createForm.get('front_image')" 
-                    ></app-input-image>
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'ISBN'" 
+            [inputType]="'text'" 
+            [control]="createForm.get('isbn')"
+            ></app-input-text>
 
-                    <app-input-image
-                    [headerText]="'Contraportada'"
-                    [control]="createForm.get('back_image')" 
-                    ></app-input-image>
+            <mat-checkbox class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto" [formControl]="createForm.get('on_news')">Publicar en noticias</mat-checkbox>
 
-                    <app-input-radio
-                    [headerText]="'Estado'"
-                    [control]="createForm.get('status')" 
-                    [options]="optionsStatus" 
-                    ></app-input-radio>
+            <app-input-radio class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Estado'"
+            [control]="createForm.get('status')" 
+            [options]="optionsStatus" 
+            ></app-input-radio>
 
-                    <mat-checkbox [formControl]="createForm.get('on_news')">Publicar en noticias</mat-checkbox>
-                    
-                    <div class="disposition1 mt-2">
-                        <button class="custom-large-btn" type="submit" [disabled]="createForm.invalid">Ingresar</button>
-                    </div>
-                </form>
 
-            </div>
-        </div>
+            <app-input-image class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Portada'"
+            [control]="createForm.get('front_image')" 
+            ></app-input-image>
 
-        <div class="bg-primary col-sm-6 col-md-6 col-lg-6">
+            <app-input-image class="col-lg-4 col-md-4 col-sm-6 mb-0 mx-lg-auto"
+            [headerText]="'Contraportada'"
+            [control]="createForm.get('back_image')" 
+            ></app-input-image>
+
+        
             
-        </div>
-
+            <div class="d-flex justify-content-center col-lg-12 col-md-12 col-sm-12 m-0">
+                <button class="custom-large-btn" type="submit" [disabled]="createForm.invalid">Guardar</button>
+            </div>
+        </form>
     </div>
 
 </div>
