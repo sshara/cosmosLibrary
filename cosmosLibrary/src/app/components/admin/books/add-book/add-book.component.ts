@@ -18,21 +18,29 @@ export class AddBookComponent implements OnInit {
     language: new FormControl('', [Validators.required]),
     isbn: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
     front_image: new FormControl('', [Validators.required]),
-    back_image: new FormControl('', [Validators.required])
+    back_image: new FormControl('', [Validators.required]),
+    status: new FormControl('', [Validators.required]),
+    on_news: new FormControl(false),
   })
 
   public optionsTopic:any[];
   public optionsLanguage:any[];
+  public optionsStatus:string[];
 
   constructor() { 
-    this.optionsTopic = [{id: 'english', name: 'english'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ]
+    this.optionsTopic = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ]
     this.optionsLanguage = [{id: 0, name: 'english'}, { id: 1, name: 'español'}, { id: 2, name: 'francaise'} ]
+    this.optionsStatus = ['Nuevo', 'Usado'];
   }
 
   ngOnInit(): void {
   }
 
   createBook(){
+    console.log(this.createForm.value , this.createForm.get('on_news').value)
+    if(this.createForm.get('on_news').value){
+      console.log('published en news');
+    }
   }
 
 }

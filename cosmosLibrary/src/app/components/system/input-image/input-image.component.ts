@@ -16,7 +16,7 @@ export class InputImageComponent implements OnInit {
   private _defaultImage:string; 
   
   constructor() { 
-    this._defaultImage = '/assets/images/placeholderImage.png';
+    this._defaultImage = '/assets/images/bookplaceholder.png';
     this.imgURL = this._defaultImage;
   }
 
