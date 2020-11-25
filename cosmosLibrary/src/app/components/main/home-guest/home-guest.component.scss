@@ -49,7 +49,7 @@ $gray-3:#363636;
         padding-top: 0.2rem;
         padding-bottom: 0.2rem;
         padding-right: 0.6rem;
-        padding-left: 1.5rem;
+        padding-left: 2rem;
         width: 80%;
         align-self: center;
     }
@@ -57,7 +57,7 @@ $gray-3:#363636;
     ::placeholder{
         letter-spacing: 0.04rem;
         color: rgba($color: $gray-2, $alpha: 1);
-        text-align: right;
+        text-align: left;
         font-size: 13px;
     }
 
@@ -87,7 +87,7 @@ $gray-3:#363636;
         flex-grow: 5;
         letter-spacing: 0.04rem;
         text-overflow: ellipsis;
-        padding: 0.2rem 0.7rem;
+        padding: 0.2rem 2rem;
         width: 80%;
         align-self: center;
     }
@@ -95,7 +95,7 @@ $gray-3:#363636;
     ::placeholder{
         letter-spacing: 0.04rem;
         color: rgba($color: $gray-2, $alpha: 1);
-        text-align: right;
+        text-align: left;
         font-size: 16px;
     }
 
