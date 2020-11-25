@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-add-book',
@@ -27,9 +28,16 @@ export class AddBookComponent implements OnInit {
   public optionsLanguage:any[];
   public optionsStatus:string[];
 
-  constructor() { 
-    this.optionsTopic = [{id: 'literatura', name: 'literatura'}, { id: 'ES', name: 'español'}, { id: 'FR', name: 'francaise'} ]
-    this.optionsLanguage = [{id: 0, name: 'english'}, { id: 1, name: 'español'}, { id: 2, name: 'francaise'} ]
+  constructor(
+    private _adminService:AdminService
+  ) { 
+    this.optionsTopic = [{id: 'RMC', name: 'Romance'}, { id: 'REA', name: 'Realismo'}, 
+    { id: 'SUR', name: 'Surrealismo'}, { id: 'RMA', name: 'Realismo Mágico'}, 
+    { id: 'CMD', name: 'Comedia'}, { id: 'DRM', name: 'Drama'}, { id: 'TER', name: 'Terror'}, 
+    { id: 'SUS', name: 'Suspenso'}, { id: 'TRA', name: 'Tragedia'}, { id: 'CFC', name: 'Ciencia Ficción'}, 
+    { id: 'FAN', name: 'Fantasía'}, { id: 'MIS', name: 'Misterio'} ];
+    this.optionsLanguage = [{id: 0, name: 'English'}, { id: 1, name: 'Español'}, 
+    { id: 2, name: 'Française'}, { id: 3, name: 'Deutsche'}, { id: 4, name: 'Português'}, { id: 5, name: '中文'} ]
     this.optionsStatus = ['Nuevo', 'Usado'];
   }
 
@@ -37,10 +45,7 @@ export class AddBookComponent implements OnInit {
   }
 
   createBook(){
-    console.log(this.createForm.value , this.createForm.get('on_news').value)
-    if(this.createForm.get('on_news').value){
-      console.log('published en news');
-    }
+    this._adminService.createBook(this.createForm.value);
   }
 
 }

@@ -23,18 +23,35 @@ export class SessionService {
   }
 
   signUp(data:any){
+    console.log(data);
     let {username, email} = data;
     this.usersRef = this.firebase.list('/users', ref => ref.orderByChild('email').equalTo(email));
-    let subscriptor = this.usersRef.valueChanges().subscribe(users =>{
+    let subscriptor1 = this.usersRef.valueChanges().subscribe(users =>{
       let user = users.pop();
       if(user){
         this._generalService.openSnackBar({message:'El correo electrónico ingresado, ya se encuentra registrado.'});
       }else{
-        data.role = 'client';
-        this.userRef = this.firebase.object(`users/${username}`);
-        return this.userRef.set(user);
+        this.usersRef = this.firebase.list('/users', ref => ref.orderByChild('username').equalTo(username));
+        let subscriptor2 = this.usersRef.valueChanges().subscribe(users =>{
+          let user = users.pop();
+          if(user){
+            this._generalService.openSnackBar({message:'El nombre de usuario ingresado, ya se encuentra registrado.'});
+          }else{
+            data.role = 'client';
+            this.userRef = this.firebase.object(`users/${username}`);
+            this.userRef.set(data)
+            .then(res => {
+              this._generalService.openSnackBar({message:'Se ha creado la cuenta satisfactoriamente.'});
+              this._generalService.goTo('login');
+            })
+            .catch(err=>{
+              this._generalService.openSnackBar({message:'Ocurrió un error al crear la cuenta.'});
+            });
+          }
+          subscriptor2.unsubscribe();
+        });
       }
-      subscriptor.unsubscribe();
+      subscriptor1.unsubscribe();
     })
 
     
