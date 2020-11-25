@@ -7,5 +7,6 @@ export const environment = {
     projectId: "cosmos-library",
     storageBucket: "cosmos-library.appspot.com",
     messagingSenderId: "582380640445",
-  }
+  },
+  url:'https://cosmoslibrary.herokuapp.com'
 };
