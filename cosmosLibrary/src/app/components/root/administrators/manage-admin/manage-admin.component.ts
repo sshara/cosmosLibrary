@@ -18,4 +18,8 @@ export class ManageAdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  manageAdmin(){
+    
+  }
+
 }

@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GeneralSnackBarComponent } from 'src/app/components/system/general-snack-bar/general-snack-bar.component';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

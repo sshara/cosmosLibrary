@@ -86,7 +86,7 @@ button:focus{
 
 .bg-color{
     background-color: #F1B764;
-    height: 100%;
+    height: auto;
 }
 
 .icons{
@@ -105,4 +105,9 @@ button:focus{
 
 .mat-snack-bar-container{
     background-color: $gray-1;
+}
+
+.mat-icon-button{
+    width: 0;
+    height: 0;
 }
