@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public parameter:string;
 
-  ngOnInit(): void {
+  constructor(private _generalService:GeneralService) {
+    this.parameter = '';
+   }
+
+   ngOnInit(): void {
+  }
+
+  search(event:any){
+  }
+
+  goTo(route:string){
+    this._generalService.goTo(route);
   }
 
 }
