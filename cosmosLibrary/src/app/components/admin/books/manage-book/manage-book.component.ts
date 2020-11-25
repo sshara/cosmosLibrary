@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/services/system/general.service';
+import { DeleteBookComponent } from '../delete-book/delete-book.component';
 
 @Component({
   selector: 'app-manage-book',
@@ -9,10 +11,8 @@ export class ManageBookComponent implements OnInit {
 
   public books:any[];
 
-  constructor() { 
+  constructor(private _generalService:GeneralService) { 
     this.books = [
-      
-      
       {
         front_image:'https://compote.slate.com/images/73f0857e-2a1a-4fea-b97a-bd4c241c01f5.jpg', 
         title: 'Patata',
@@ -37,12 +37,22 @@ export class ManageBookComponent implements OnInit {
         topic:'Drama',
         editorial:'Los enanitos azules'
       }
-    ]
+    ];
   }
 
   ngOnInit(): void {
   }
 
-  
+  editBook(book:any){
+    this.goTo('edit-book');
+  }
+
+  deleteBook(book:any){
+    this._generalService.openDialog(DeleteBookComponent);
+  }
+
+  goTo(route:string){
+    this._generalService.goTo(route);
+  }
 
 }

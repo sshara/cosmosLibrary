@@ -12,4 +12,6 @@ export class DeleteBookComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  accept(){}
+
 }

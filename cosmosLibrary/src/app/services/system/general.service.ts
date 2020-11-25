@@ -30,5 +30,19 @@ export class GeneralService {
     return snackRef;
   }
 
+  openDialog(component: any, information?: any, close?: boolean) : MatDialogRef<any> {
+    const dialogRef = this._dialog.open(component, 
+      {
+        data: information,
+        hasBackdrop: true,
+        panelClass: "custom-dialog",
+        backdropClass: "backdrop-dialog",
+        closeOnNavigation: true,
+        disableClose:close
+      }
+    );
+    return dialogRef;
+  }
+
 
 }
