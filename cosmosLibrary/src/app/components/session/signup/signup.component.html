@@ -3,83 +3,86 @@
 
     <div class="container py-5">
         <form class="row mt-2" #signUpForm= "ngForm" (ngSubmit)= "signUp()" [formGroup]="signupForm">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <app-input-text class=" mb-2"
+                [headerText]="'Nombre'" 
+                [inputType]="'text'" 
+                [control]="signupForm.get('name')"></app-input-text>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Nombre'" 
-            [inputType]="'text'" 
-            [control]="signupForm.get('name')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+                <app-input-text class="mb-2"
+                [headerText]="'Apellidos'" 
+                [inputType]="'text'" 
+                [control]="signupForm.get('lastname')"></app-input-text>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Apellidos'" 
-            [inputType]="'text'" 
-            [control]="signupForm.get('lastname')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+                <app-input-date class="mb-2"
+                [headerText]="'Fecha de nacimiento'" 
+                [control]="signupForm.get('birthdate')"></app-input-date>
 
-            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'DNI'"
-            [control]="signupForm.get('dni_type')"
-            [options]="dniOptions"></app-input-select>
+                <app-input-select class="mb-2"
+                [headerText]="'Género'"
+                [control]="signupForm.get('gender')"
+                [options]="genderOptions"></app-input-select>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <app-input-select class="mb-2"
+                [headerText]="'DNI'"
+                [control]="signupForm.get('dni_type')"
+                [options]="dniOptions"></app-input-select>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Numero'" 
-            [inputType]="'number'" 
-            [control]="signupForm.get('dni')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+                <app-input-text class="mb-2"
+                [headerText]="'Numero'" 
+                [inputType]="'number'" 
+                [control]="signupForm.get('dni')"></app-input-text>
 
-            <app-input-date class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Fecha de nacimiento'" 
-            [control]="signupForm.get('birthdate')"></app-input-date>
+                <app-input-text class="mb-2"
+                [headerText]="'e-mail'" 
+                [inputType]="'email'" 
+                [control]="signupForm.get('email')"></app-input-text>
 
-            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'país'"
-            [control]="signupForm.get('country')"
-            [options]="countryOptions"></app-input-select>
+                <app-input-select class="mb-2"
+                [headerText]="'Temas de interes'"
+                [control]="signupForm.get('topic')"
+                [options]="topicOptions"></app-input-select>
 
-            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Estado/Dep'"
-            [control]="signupForm.get('state')"
-            [options]="stateOptions"></app-input-select>
+            </div>
 
-            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'ciudad'"
-            [control]="signupForm.get('city')"
-            [options]="cityOptions"></app-input-select>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <app-input-select class="mb-2"
+                [headerText]="'país'"
+                [control]="signupForm.get('country')"
+                [options]="countryOptions"></app-input-select>
 
-            <app-input-radio class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Género'"
-            [control]="signupForm.get('gender')"
-            [options]="genderOptions"></app-input-radio>
+                <app-input-select class="mb-2"
+                [headerText]="'Estado/Dep'"
+                [control]="signupForm.get('state')"
+                [options]="stateOptions"></app-input-select>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'e-mail'" 
-            [inputType]="'email'" 
-            [control]="signupForm.get('email')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+                <app-input-select class="mb-2"
+                [headerText]="'ciudad'"
+                [control]="signupForm.get('city')"
+                [options]="cityOptions"></app-input-select>
+                
+            </div>
 
-            <app-input-select class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Temas de interes'"
-            [control]="signupForm.get('topic')"
-            [options]="topicOptions"></app-input-select>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <app-input-text class="mb-2"
+                [headerText]="'Usuario'" 
+                [inputType]="'text'" 
+                [control]="signupForm.get('username')"></app-input-text>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Usuario'" 
-            [inputType]="'text'" 
-            [control]="signupForm.get('username')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+                <app-input-text class="mb-2"
+                [headerText]="'Contraseña'" 
+                [inputType]="'password'" 
+                [control]="signupForm.get('password')"></app-input-text>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-2"
-            [headerText]="'Contraseña'" 
-            [inputType]="'password'" 
-            [control]="signupForm.get('password')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
+                <app-input-text class="mb-1"
+                [headerText]="'Confirmar Contraseña'" 
+                [inputType]="'password'" 
+                [control]="signupForm.get('confirmationPassword')"></app-input-text>
+            </div>
 
-            <app-input-text class="col-lg-3 col-md-4 col-sm-6 mb-1"
-            [headerText]="'Confirmar Contraseña'" 
-            [inputType]="'password'" 
-            [control]="signupForm.get('confirmationPassword')"
-            class="col-lg-3 col-md-4 col-sm-6"></app-input-text>
-
+        
             <div *ngIf="isFormError()" class="d-flex justify-content-center col-lg-12 col-md-12 col-sm-12 m-0 alert alert-danger" role="alert">
                 <p *ngIf="signupForm.errors.noMatchingPassword">Las contraseñas no coinciden.</p>
             </div>
