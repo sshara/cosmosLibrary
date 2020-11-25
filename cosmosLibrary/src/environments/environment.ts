@@ -11,7 +11,8 @@ export const environment = {
     projectId: "cosmos-library",
     storageBucket: "cosmos-library.appspot.com",
     messagingSenderId: "582380640445",
-  }
+  },
+  url:'http://192.168.0.69/4200'
 };
 
 /*

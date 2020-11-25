@@ -21,12 +21,15 @@
                     <app-input-text 
                     [headerText]="'Confirmación de contraseña'" 
                     [inputType]="'password'" 
-                    [control]="manageForm.get('confimationPassword')"
+                    [control]="manageForm.get('confirmationPassword')"
                     ></app-input-text>
+
+                    <div *ngIf="isFormError()" class="alert alert-danger" role="alert">
+                        <p *ngIf="manageForm.errors.noMatchingPassword">Las contraseñas no coinciden.</p>
+                    </div>
                     
                     <div class="disposition1 mt-2">
                         <button class="custom-large-btn" type="submit" [disabled]="manageForm.invalid">Crear admin</button>
-                        <button class="custom-large-btn" type="submit" [disabled]="manageForm.invalid">Cancelar</button>
                     </div>
                 </form>
             </div>

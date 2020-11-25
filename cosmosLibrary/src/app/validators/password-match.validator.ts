@@ -5,9 +5,9 @@ import { Injectable } from "@angular/core";
 export class PasswordMatchVaildator implements Validator {
 
   validate(formGroup: FormGroup) {
-    const { password, confirmPassword } = formGroup.value;
+    const { password, confirmationPassword } = formGroup.value;
 
-    if (password === confirmPassword) {
+    if (password === confirmationPassword) {
       return null;
     } else {
       return { noMatchingPassword: true };

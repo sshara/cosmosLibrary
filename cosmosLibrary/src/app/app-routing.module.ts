@@ -11,6 +11,7 @@ import { LoginComponent } from './components/session/login/login.component';
 import { RecoverPasswordComponent } from './components/session/recover-password/recover-password.component';
 import { SignupComponent } from './components/session/signup/signup.component';
 import { NavigationGuard } from './services/system/navigation.guard';
+import { ManageAdminComponent } from './components/root/administrators/manage-admin/manage-admin.component';
 
 const routes: Routes = [
   {path: 'login', canActivate:[NavigationGuard], component:LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'recover-password', canActivate:[NavigationGuard], component:RecoverPasswordComponent},
   {path: 'main-admin', canActivate:[NavigationGuard], component:MainAdminComponent},
   {path: 'add-book', canActivate:[NavigationGuard], component:AddBookComponent},
+  {path: 'manage-admin', canActivate:[NavigationGuard], component:ManageAdminComponent},
   {path: 'edit-book', canActivate:[NavigationGuard], component:EditBookComponent},
   {path: 'delete-book', canActivate:[NavigationGuard], component:DeleteBookComponent},
   {path: 'manage-book', canActivate:[NavigationGuard], component:ManageBookComponent},
