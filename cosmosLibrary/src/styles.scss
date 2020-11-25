@@ -63,7 +63,25 @@ button:focus{
     line-height: 1rem;
 }
 
+.backdrop-dialog {
+    background-color: rgba($color: $gray-3, $alpha: 0.22);
+ }
 
+ .custom-dialog  .mat-dialog-container {
+    background-color: $white;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+    box-shadow: 7px 7px 11px #00000029;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    min-width: 250px;
+    width: 400px;
+    z-index: 1000;
+}
 
 .card-body{
     display: flex;
@@ -86,6 +104,7 @@ button:focus{
 
 .bg-color{
     background-color: #F1B764;
+    min-height: 100%;
     height: auto;
 }
 
