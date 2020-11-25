@@ -37,8 +37,8 @@ export class EditBookComponent implements OnInit {
     { id: 'CMD', name: 'Comedia'}, { id: 'DRM', name: 'Drama'}, { id: 'TER', name: 'Terror'}, 
     { id: 'SUS', name: 'Suspenso'}, { id: 'TRA', name: 'Tragedia'}, { id: 'CFC', name: 'Ciencia Ficción'}, 
     { id: 'FAN', name: 'Fantasía'}, { id: 'MIS', name: 'Misterio'} ];
-    this.optionsLanguage = [{id: 0, name: 'English'}, { id: 1, name: 'Español'}, 
-    { id: 2, name: 'Française'}, { id: 3, name: 'Deutsche'}, { id: 4, name: 'Português'}, { id: 5, name: '中文'} ]
+    this.optionsLanguage = [{id: 'EN', name: 'English'}, { id: 'ES', name: 'Español'}, 
+    { id: 'FR', name: 'Française'}, { id: 'DE', name: 'Deutsche'}, { id: 'PT', name: 'Português'}, { id: 'JP', name: '中文'} ]
     this.optionsStatus = ['Nuevo', 'Usado'];
   }
 
