@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'home-client', canActivate:[NavigationGuard], component:HomeComponent},
   {path: 'home-guest', canActivate:[NavigationGuard], component:HomeGuestComponent},
 
-  {path: '**', pathMatch: 'full', redirectTo: 'login'}
+  {path: '**', pathMatch: 'full', redirectTo: 'home-guest'}
 ];
 
 @NgModule({
