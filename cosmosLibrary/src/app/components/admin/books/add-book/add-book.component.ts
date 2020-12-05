@@ -22,6 +22,8 @@ export class AddBookComponent implements OnInit {
     back_image: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
     on_news: new FormControl(false),
+    price: new FormControl('',[Validators.required]),
+    available_units: new FormControl('',[Validators.required]),
   })
 
   public optionsTopic:any[];

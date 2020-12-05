@@ -47,7 +47,19 @@
             [options]="optionsLanguage" 
             ></app-input-select>
 
-            <mat-checkbox class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto" [formControl]="updateForm.get('on_news')">Publicar en noticias</mat-checkbox>
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Precio'" 
+            [inputType]="'number'" 
+            [control]="updateForm.get('price')"
+            ></app-input-text>
+
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Unidades disponibles'" 
+            [inputType]="'number'" 
+            [control]="updateForm.get('available_units')"
+            ></app-input-text>
+
+            <mat-checkbox class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto px-4" [formControl]="updateForm.get('on_news')">Publicar en noticias</mat-checkbox>
 
             <app-input-radio class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
             [headerText]="'Estado'"

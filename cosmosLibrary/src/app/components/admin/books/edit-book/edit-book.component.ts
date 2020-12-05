@@ -22,6 +22,8 @@ export class EditBookComponent implements OnInit {
     back_image: new FormControl(''),
     status: new FormControl(''),
     on_news: new FormControl(false),
+    price: new FormControl('',[Validators.required]),
+    available_units: new FormControl('',[Validators.required]),
   })
 
   public optionsTopic:any[];

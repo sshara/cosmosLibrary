@@ -53,6 +53,18 @@
             [control]="createForm.get('isbn')"
             ></app-input-text>
 
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Precio'" 
+            [inputType]="'number'" 
+            [control]="createForm.get('price')"
+            ></app-input-text>
+
+            <app-input-text class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
+            [headerText]="'Unidades disponibles'" 
+            [inputType]="'number'" 
+            [control]="createForm.get('available_units')"
+            ></app-input-text>
+
             <mat-checkbox class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto" [formControl]="createForm.get('on_news')">Publicar en noticias</mat-checkbox>
 
             <app-input-radio class="col-lg-4 col-md-4 col-sm-6 mb-2 mx-lg-auto"
