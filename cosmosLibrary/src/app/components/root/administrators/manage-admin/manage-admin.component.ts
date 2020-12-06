@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordMatchVaildator } from 'src/app/validators/password-match.validator';
 import { RootService } from 'src/app/services/root.service';
+import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
   selector: 'app-manage-admin',
@@ -18,7 +19,8 @@ export class ManageAdminComponent implements OnInit {
 
   constructor(
     private _passwordMatchValidator: PasswordMatchVaildator,
-    private _rootService:RootService
+    private _rootService:RootService,
+    private _generalService:GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,10 @@ export class ManageAdminComponent implements OnInit {
     const passwordTouched = this.manageForm.get('password').touched;
     const confirmPasswordTouched = this.manageForm.get('confirmationPassword').touched;
     return errors && passwordTouched && confirmPasswordTouched;
+  }
+
+  logOut(){
+    this._generalService.clearLocaleData();
   }
 
 }

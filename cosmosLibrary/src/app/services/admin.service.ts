@@ -175,7 +175,7 @@ export class AdminService {
         this.userRef.update(data)
         .then(update => {
           this._generalService.openSnackBar({message:'Se ha actualizado la cuenta satisfactoriamente.'});
-          this._generalService.goTo('main-admin');
+          this._generalService.goTo('manage-books');
         })
         .catch(err=>{
           this._generalService.openSnackBar({message:'Ocurrió un error al actualizar la cuenta.'});

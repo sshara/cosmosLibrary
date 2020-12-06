@@ -1,5 +1,27 @@
 
 <div class="container-fluid bg-color">
+    <div class="menu">
+        <div class="bg-icon1" [matMenuTriggerFor]="menu"><mat-icon [inline]=true>menu</mat-icon></div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="goTo('home')">
+                <mat-icon>home</mat-icon>
+                <span>Inicio</span>
+            </button>
+            <button mat-menu-item (click)="goTo('sold-out')">
+                <mat-icon>remove_shopping_cart</mat-icon>
+                <span>Agotados</span>
+            </button>
+            <button mat-menu-item (click)="goTo('update-admin')">
+                <mat-icon>account_circle</mat-icon>
+                <span>Perfil</span>
+            </button>
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon>arrow_back_ios</mat-icon>
+                <span>Salir</span>
+            </button>
+        </mat-menu>
+    </div>
+
     <app-header></app-header>
 
     <div class="container py-5">

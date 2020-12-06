@@ -100,4 +100,9 @@ export class ProfileComponent implements OnInit , OnDestroy {
     this._subscriptorState.unsubscribe();
   }
 
+  logOut(){
+    this._generalService.clearLocaleData();
+  }
+  
+
 }

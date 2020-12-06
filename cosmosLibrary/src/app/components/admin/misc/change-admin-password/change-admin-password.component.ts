@@ -102,4 +102,8 @@ export class ChangeAdminPasswordComponent implements OnInit , OnDestroy {
     this._subscriptorCountry.unsubscribe();
     this._subscriptorState.unsubscribe();
   }
+
+  logOut(){
+    this._generalService.clearLocaleData();
+  }
 }

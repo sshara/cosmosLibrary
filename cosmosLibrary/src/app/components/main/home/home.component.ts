@@ -35,4 +35,14 @@ export class HomeComponent implements OnInit {
     this._generalService.goTo(route);
   }
 
+  book(book:any){}
+
+  addtoShoppingcart(book:any){
+
+  }
+
+  logOut(){
+    this._generalService.clearLocaleData();
+  }
+
 }

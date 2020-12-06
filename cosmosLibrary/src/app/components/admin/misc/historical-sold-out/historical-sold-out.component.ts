@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
   selector: 'app-historical-sold-out',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricalSoldOutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _generalService:GeneralService) { }
 
   ngOnInit(): void {
+  }
+
+  goTo(route:string){
+    this._generalService.goTo(route);
+  }
+
+  logOut(){
+    this._generalService.clearLocaleData();
   }
 
 }

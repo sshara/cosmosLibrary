@@ -1,10 +1,24 @@
 <div class="container-fluid bg-color">
+    <div class="menu">
+        <div class="bg-icon1" [matMenuTriggerFor]="menu"><mat-icon [inline]=true>menu</mat-icon></div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openshoppingcart()">
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Carrito</span>
+            </button>
+            <button mat-menu-item (click)="goTo('login')">
+                <mat-icon>login</mat-icon>
+                <span>Ingresar</span>
+            </button>
+            <button mat-menu-item (click)="goTo('signup')">
+                <mat-icon>person_add_alt_1</mat-icon>
+                <span>Registro</span>
+            </button>
+        </mat-menu>
+    </div>
+
     <app-header></app-header>
     <div class="d-flex flex-column align-items-center">
-        <div class="d-flex flex-md-row justify-content-center col-lg-12 col-md-12 col-sm-12 m-0 disposition0">
-            <button class="custom-large-btn mr-sm-4" type="button" (click)="goTo('login')">Iniciar sesion</button>
-            <button class="custom-large-btn" type="button" (click)="goTo('signup')">Crear cuenta</button>
-        </div>
         <div class="form-group-2 d-flex justify-content-center mt-5">
             <mat-icon class="position" [inline]=true>search</mat-icon>
             <input class="form-control-2" type="text" name="search" placeholder="Titulo, autor, editorial..." [(ngModel)] = "parameter">
@@ -25,7 +39,12 @@
                         Género: {{book.topic}} <br>
                         Idioma: {{book.language}} <br>
                         Editorial: {{book.editorial}}
+                        Precio: {{book.price}} <br>
+                        Unidades disponibles: {{book.available_units}} 
                     </p>
+                </div>
+                <div class="footer d-flex  justify-content-around mb-3">
+                    <div class="bg-icon"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
                 </div>
             </div>
         </div>

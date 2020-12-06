@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~bootstrap/scss/bootstrap-grid';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -167,3 +168,40 @@ button:focus{
     background-color:$gray-2 !important;
     border: 1px solid rgba($color:$gray-2, $alpha: 1)!important;
 }
+
+.bg-icon1{
+    border-radius: 5px;
+    z-index: 100;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color:#F1B764;
+}
+
+.bg-icon1 > .mat-icon.mat-icon-inline{
+    font-size: 23px;
+    text-align: center;
+    line-height: 2rem;
+    color: black;
+}
+
+@include media-breakpoint-between(xs, sm) {
+    .menu{
+        position: absolute;
+        float: left;
+        top: 7px;
+        right: 10px;
+        z-index: 100;
+    }
+}
+
+@include media-breakpoint-between(md, xl) {
+    .menu{
+        position: absolute;
+        float: left;
+        top: 20px;
+        right: 30px;
+        z-index: 100;
+    }
+}
+

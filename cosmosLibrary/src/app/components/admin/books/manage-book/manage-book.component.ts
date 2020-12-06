@@ -46,4 +46,8 @@ export class ManageBookComponent implements OnInit {
     this._generalService.goTo(route);
   }
 
+  logOut(){
+    this._generalService.clearLocaleData();
+  }
+
 }

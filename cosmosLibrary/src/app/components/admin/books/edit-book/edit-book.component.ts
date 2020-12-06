@@ -60,4 +60,12 @@ export class EditBookComponent implements OnInit {
     this._adminService.updateBook(this.updateForm.value);
   }
 
+  goTo(route:string){
+    this._generalService.goTo(route);
+  }
+
+  logOut(){
+    this._generalService.clearLocaleData();
+  }
+
 }
