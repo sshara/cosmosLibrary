@@ -3,7 +3,7 @@
         <div class="bg-icon1" [matMenuTriggerFor]="menu"><mat-icon [inline]=true>menu</mat-icon></div>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="openshoppingcart()">
-                <mat-icon>shopping_cart</mat-icon>
+                <mat-icon matBadge="15" matBadgeColor="warn" matBadgeHidden="false">shopping_cart</mat-icon>
                 <span>Carrito</span>
             </button>
             <button mat-menu-item (click)="goTo('login')">
@@ -46,7 +46,7 @@
                         </p>
                     </div>
                     <div class="footer d-flex  justify-content-around mb-3">
-                        <div class="bg-icon"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
+                        <div class="bg-icon" (click)="addToCart(book)"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class GeneralService {
 
   shoppingCartValue = new BehaviorSubject(this.shoppingCart);
-
+  //cart =  {items:{isbn:amount}, total:number } 
   constructor(
     private _router: Router,
     private _snackBar: MatSnackBar,
@@ -104,7 +104,15 @@ export class GeneralService {
   }
 
   addItemToShoppingCart(item){
-    this.shoppingCart({...this.shoppingCart, item});
+    let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
+    newShoppingCart.items[item.isbn] = 1;
+    this.shoppingCart(newShoppingCart);
+  }
+
+  removeItemToShoppingCart(item){
+    let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
+    delete newShoppingCart.items[item.isbn];
+    this.shoppingCart(newShoppingCart);
   }
 
   saveInfo(name:string, info:any){
