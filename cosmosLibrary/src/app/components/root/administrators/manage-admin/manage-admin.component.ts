@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordMatchVaildator } from 'src/app/validators/password-match.validator';
 import { RootService } from 'src/app/services/root.service';
@@ -9,7 +9,7 @@ import { GeneralService } from 'src/app/services/system/general.service';
   templateUrl: './manage-admin.component.html',
   styleUrls: ['./manage-admin.component.scss']
 })
-export class ManageAdminComponent implements OnInit {
+export class ManageAdminComponent implements OnInit, OnDestroy{
 
   manageForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern(/^([^\.\#\$\,\[\]])+$/)]),

@@ -18,36 +18,40 @@
     </div>
 
     <app-header></app-header>
-    <div class="d-flex flex-column align-items-center">
-        <div class="form-group-2 d-flex justify-content-center mt-5">
-            <mat-icon class="position" [inline]=true>search</mat-icon>
-            <input class="form-control-2" type="text" name="search" placeholder="Titulo, autor, editorial..." [(ngModel)] = "parameter">
-        </div>
-    </div>
 
-    <div class="row mt-4">
-
-        <div class="col-lg-2 col-md-3 col-sm-4 mb-3" *ngFor="let book of books | filterBy:parameter:['title','author','isbn','editorial','topic']">
-            <div class="card">
-                <img class="card-img-top" [src]="book.front_image" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">
-                    {{book.title}}
-                    </h4>
-                    <p class="card-text">
-                        Autor: {{book.author}} <br> 
-                        Género: {{book.topic}} <br>
-                        Idioma: {{book.language}} <br>
-                        Editorial: {{book.editorial}} <br>
-                        Precio: {{book.price}} <br>
-                        Unidades disponibles: {{book.available_units}} 
-                    </p>
-                </div>
-                <div class="footer d-flex  justify-content-around mb-3">
-                    <div class="bg-icon"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
-                </div>
+    <div class="container">
+        <div class="d-flex flex-column align-items-center">
+            <div class="form-group-2 d-flex justify-content-center mt-5">
+                <mat-icon class="position" [inline]=true>search</mat-icon>
+                <input class="form-control-2" type="text" name="search" placeholder="Titulo, autor, editorial..." [(ngModel)] = "parameter">
             </div>
         </div>
-        
+
+        <div class="row mt-4">
+
+            <div class="col-lg-3 col-md-3 col-sm-4 mb-3" *ngFor="let book of books | filterBy:parameter:['title','author','isbn','editorial','topic']">
+                <div class="card">
+                    <img class="card-img-top" [src]="book.front_image" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        {{book.title}}
+                        </h4>
+                        <p class="card-text">
+                            Autor: {{book.author}} <br> 
+                            Género: {{book.topic}} <br>
+                            Idioma: {{book.language}} <br>
+                            Editorial: {{book.editorial}} <br>
+                            Precio: {{book.price}} <br>
+                            Unidades disponibles: {{book.available_units}} 
+                        </p>
+                    </div>
+                    <div class="footer d-flex  justify-content-around mb-3">
+                        <div class="bg-icon"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
+    
 </div>
