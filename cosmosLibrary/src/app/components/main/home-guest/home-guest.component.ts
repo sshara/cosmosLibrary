@@ -35,4 +35,9 @@ export class HomeGuestComponent implements OnInit {
     this._generalService.goTo(route);
   }
 
+  openshoppingcart(){
+    this._generalService.openSnackBar({message:'Para ver tu carrito de compras debes registrarte'});
+    this.goTo('signup');
+  }
+
 }

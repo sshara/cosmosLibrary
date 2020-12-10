@@ -1,32 +1,100 @@
 <div class="container-fluid bg-color">
+    <div class="menu">
+        <div class="bg-icon1" [matMenuTriggerFor]="menu"><mat-icon [inline]=true>menu</mat-icon></div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="goTo('shopping-cart')">
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Carrito</span>
+            </button>
+            <button mat-menu-item (click)="goTo('history-client')">
+                <mat-icon>playlist_add_check</mat-icon>
+                <span>Historial</span>
+            </button>
+            <button mat-menu-item (click)="goTo('pocket-client')">
+                <mat-icon>account_balance_wallet</mat-icon>
+                <span>Monedero</span>
+            </button>
+            <button mat-menu-item (click)="goTo('profile-client')">
+                <mat-icon>account_circle</mat-icon>
+                <span>Perfil</span>
+            </button>
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon>arrow_back_ios</mat-icon>
+                <span>Salir</span>
+            </button>
+        </mat-menu>
+    </div>
+    
     <app-header></app-header>
 
-    <div class="d-flex flex-column align-items-center">
-        <button class="custom-large-btn" type="button" (click)="goTo('profile-client')">Editar perfil</button>
-        <div class="form-group-2 d-flex justify-content-center mt-1">
-            <mat-icon class="position" [inline]=true>search</mat-icon>
-            <input class="form-control-2" type="text" name="search"  placeholder="Titulo, autor, editorial..." [(ngModel)] = "parameter">
-        </div>
-    </div>
-
-    <div class="row mt-4">
-
-        <div class="col-lg-2 col-md-3 col-sm-4 mb-3" *ngFor="let book of books | filterBy:parameter:['title','author','isbn','editorial','topic']">
-            <div class="card">
-                <img class="card-img-top" [src]="book.front_image" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">
-                    {{book.title}}
-                    </h4>
-                    <p class="card-text">
-                        Autor: {{book.author}} <br> 
-                        Género: {{book.topic}} <br>
-                        Idioma: {{book.language}} <br>
-                        Editorial: {{book.editorial}}
-                    </p>
-                </div>
+    <div class="container">
+        <div class="d-flex flex-column align-items-center">
+        
+            <div class="form-group-2 d-flex justify-content-center mt-3">
+                <mat-icon class="position" [inline]=true>search</mat-icon>
+                <input class="form-control-2" type="text" name="search"  placeholder="Titulo, autor, editorial..." [(ngModel)] = "parameter">
             </div>
         </div>
-        
+
+        <div *ngIf="parameter == ''" class="row mt-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                <p class="lead mb-0">Recomendados para ti</p>
+                <hr class="mt-2">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 mb-3" *ngFor="let book of suggestedBooks">
+                <div class="card">
+                    <img class="card-img-top" [src]="book.front_image" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        {{book.title}}
+                        </h4>
+                        <p class="card-text">
+                            Autor: {{book.author}} <br> 
+                            Género: {{book.topic}} <br>
+                            Idioma: {{book.language}} <br>
+                            Editorial: {{book.editorial}} <br>
+                            Precio: {{book.price}} <br>
+                            Unidades disponibles: {{book.available_units}} 
+                        </p>
+                    </div>
+                    <div class="footer d-flex  justify-content-around mb-3">
+                        <div class="bg-icon" (click)="book(book)"><mat-icon [inline]=true>playlist_add</mat-icon></div>
+                        <div class="bg-icon" (click)="addtoShoppingcart(book)"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-3">
+                <p class="lead mb-0">Todos</p>
+                <hr class="mt-2">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 mb-3" *ngFor="let book of books | filterBy:parameter:['title','author','isbn','editorial','topic']">
+                <div class="card">
+                    <img class="card-img-top" [src]="book.front_image" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        {{book.title}}
+                        </h4>
+                        <p class="card-text">
+                            Autor: {{book.author}} <br> 
+                            Género: {{book.topic}} <br>
+                            Idioma: {{book.language}} <br>
+                            Editorial: {{book.editorial}} <br>
+                            Precio: {{book.price}} <br>
+                            Unidades disponibles: {{book.available_units}} 
+                        </p>
+                    </div>
+                    <div class="footer d-flex  justify-content-around mb-3">
+                        <div class="bg-icon" (click)="book(book)"><mat-icon [inline]=true>playlist_add</mat-icon></div>
+                        <div class="bg-icon" (click)="addtoShoppingcart(book)"><mat-icon [inline]=true>add_shopping_cart</mat-icon></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
+    
 </div>

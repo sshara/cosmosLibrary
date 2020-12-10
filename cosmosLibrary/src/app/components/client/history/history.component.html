@@ -6,9 +6,9 @@
                 <mat-icon>home</mat-icon>
                 <span>Inicio</span>
             </button>
-            <button mat-menu-item (click)="goTo('history-client')">
-                <mat-icon>playlist_add_check</mat-icon>
-                <span>Historial</span>
+            <button mat-menu-item (click)="goTo('shopping-cart')">
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Carrito</span>
             </button>
             <button mat-menu-item (click)="goTo('pocket-client')">
                 <mat-icon>account_balance_wallet</mat-icon>
@@ -24,9 +24,20 @@
             </button>
         </mat-menu>
     </div>
-    
+
     <app-header></app-header>
     <div class="container py-5">
-        
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab>
+                <ng-template mat-tab-label><mat-icon class="mr-2">shopping_basket</mat-icon>Compras</ng-template>
+                Content 1
+            </mat-tab>
+            
+            <mat-tab>
+                <ng-template mat-tab-label><mat-icon class="mr-2">playlist_add_check</mat-icon>Reservas</ng-template>
+                Content 2
+            </mat-tab>
+            
+        </mat-tab-group>
     </div>
 </div>

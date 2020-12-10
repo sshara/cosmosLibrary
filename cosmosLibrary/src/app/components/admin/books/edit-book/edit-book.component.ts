@@ -22,6 +22,8 @@ export class EditBookComponent implements OnInit {
     back_image: new FormControl(''),
     status: new FormControl(''),
     on_news: new FormControl(false),
+    price: new FormControl('',[Validators.required]),
+    available_units: new FormControl('',[Validators.required]),
   })
 
   public optionsTopic:any[];
@@ -56,6 +58,14 @@ export class EditBookComponent implements OnInit {
 
   updateBook(){
     this._adminService.updateBook(this.updateForm.value);
+  }
+
+  goTo(route:string){
+    this._generalService.goTo(route);
+  }
+
+  logOut(){
+    this._generalService.clearLocaleData();
   }
 
 }

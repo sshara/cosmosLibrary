@@ -99,5 +99,15 @@ export class GeneralService {
     return JSON.parse(localStorage.getItem(name));
   }
 
+  deleteInfo(name:string){
+    localStorage.removeItem(name);
+  }
+
+  clearLocaleData(redirectTo:string = 'home') : void {
+    localStorage.removeItem('identity');
+    if (redirectTo) this._router.navigate([redirectTo]);
+    this.openSnackBar({message:'Se ha cerrado session correctamente'});
+  }
+
 
 }

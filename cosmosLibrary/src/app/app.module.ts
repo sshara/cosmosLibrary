@@ -12,15 +12,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatDividerModule} from '@angular/material/divider'; 
 import {MatListModule} from '@angular/material/list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSortModule} from '@angular/material/sort';
@@ -30,7 +26,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatStepperModule} from '@angular/material/stepper';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -50,11 +45,9 @@ import { InputDateComponent } from './components/system/input-date/input-date.co
 import { InputSelectComponent } from './components/system/input-select/input-select.component';
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/system/header/header.component';
-import { MainAdminComponent } from './components/admin/main-admin/main-admin.component';
 import { GeneralSnackBarComponent } from './components/system/general-snack-bar/general-snack-bar.component';
 import { HomeComponent } from './components/main/home/home.component';
 import { ProfileComponent } from './components/client/profile/profile.component';
-import { NewsComponent } from './components/client/news/news.component';
 import { ShoppingCartComponent } from './components/client/shopping-cart/shopping-cart.component';
 import { AddBookComponent } from './components/admin/books/add-book/add-book.component';
 import { ManageBookComponent } from './components/admin/books/manage-book/manage-book.component';
@@ -65,6 +58,9 @@ import { HistoricalSoldOutComponent } from './components/admin/misc/historical-s
 import { ManageAdminComponent } from './components/root/administrators/manage-admin/manage-admin.component';
 import { InputRadioComponent } from './components/system/input-radio/input-radio.component';
 import { HomeGuestComponent } from './components/main/home-guest/home-guest.component';
+import { HistoryComponent } from './components/client/history/history.component';
+import { RefoundsComponent } from './components/admin/misc/refounds/refounds.component';
+import { PocketComponent } from './components/client/pocket/pocket.component';
 
 
 @NgModule({
@@ -80,10 +76,8 @@ import { HomeGuestComponent } from './components/main/home-guest/home-guest.comp
     HeaderComponent,
     GeneralSnackBarComponent,
     HomeComponent,
-    MainAdminComponent,
     GeneralSnackBarComponent,
     ProfileComponent,
-    NewsComponent,
     ShoppingCartComponent,
     AddBookComponent,
     ManageBookComponent,
@@ -95,6 +89,9 @@ import { HomeGuestComponent } from './components/main/home-guest/home-guest.comp
     InputRadioComponent,
     HomeGuestComponent,
     FilterByPipe,
+    HistoryComponent,
+    RefoundsComponent,
+    PocketComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,15 +105,11 @@ import { HomeGuestComponent } from './components/main/home-guest/home-guest.comp
     MatTabsModule,
     MatExpansionModule,
     MatDialogModule,
-    MatGridListModule,
     MatCheckboxModule,
-    MatCardModule,
     MatTableModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatDividerModule,
-    MatToolbarModule, 
-    MatSidenavModule, 
+    MatDividerModule,  
     MatListModule,
     MatButtonToggleModule,
     MatSortModule,
@@ -127,7 +120,6 @@ import { HomeGuestComponent } from './components/main/home-guest/home-guest.comp
     MatTooltipModule,
     MatSlideToggleModule,
     MatStepperModule,
-    MatProgressBarModule,
     FormsModule, 
     ReactiveFormsModule,
     MatRadioModule,

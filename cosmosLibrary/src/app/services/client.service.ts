@@ -10,6 +10,7 @@ export class ClientService {
 
   usersRef: AngularFireList<any>;
   userRef: AngularFireObject<any>;
+  booksRef: AngularFireList<any>;
 
   constructor(
     private firebase: AngularFireDatabase,
@@ -51,5 +52,11 @@ export class ClientService {
     })
     
     
+  }
+
+  getSuggestedBooks(){
+    let { topic } = this._generalService.loadInfo('identity');
+    this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('topic').equalTo(topic));
+    return this.booksRef.valueChanges();
   }
 }

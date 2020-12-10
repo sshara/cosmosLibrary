@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
+import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
   selector: 'app-add-book',
@@ -22,13 +23,15 @@ export class AddBookComponent implements OnInit {
     back_image: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
     on_news: new FormControl(false),
+    price: new FormControl('',[Validators.required]),
+    available_units: new FormControl('',[Validators.required]),
   })
 
   public optionsTopic:any[];
   public optionsLanguage:any[];
   public optionsStatus:string[];
 
-  constructor(
+  constructor(private _generalService:GeneralService,
     private _adminService:AdminService
   ) { 
     this.optionsTopic = [{id: 'RMC', name: 'Romance'}, { id: 'REA', name: 'Realismo'}, 
@@ -46,6 +49,13 @@ export class AddBookComponent implements OnInit {
 
   createBook(){
     this._adminService.createBook(this.createForm.value);
+  }
+  goTo(route:string){
+    this._generalService.goTo(route);
+  }
+
+  logOut(){
+    this._generalService.clearLocaleData();
   }
 
 }

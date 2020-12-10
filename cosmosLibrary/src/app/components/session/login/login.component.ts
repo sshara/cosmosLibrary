@@ -34,19 +34,25 @@ export class LoginComponent implements OnInit {
         return;
       }
       if(password === user.password){
-        let identity = {username:user.username, role:user.role};
+        let identity = {username:user.username, role:user.role, topic:user.topic};
         this._generalService.saveInfo('identity', identity);
         console.log(this._generalService.loadInfo('identity'))
-        if(user.role === 'root'){
-          this.goTo('manage-admin');
-        }else if(user.role === 'admin'){
-          if(user.email){
-            this.goTo('main-admin');
-          }else{
-            this.goTo('update-admin');
+        if(user.role === 'admin'){
+          if(user.enabled === true){
+            if(user.email){
+              this.goTo('home');
+            }else{
+              this.goTo('update-admin');
+            }
           }
-        }else if(user.role === 'client'){
-          this.goTo('home-client');
+          else{
+            this._generalService.deleteInfo('identity');
+            this._generalService.openSnackBar({message:'El usuario no esta activo'});
+          }
+          
+        }
+        else{
+          this.goTo('home');
         }
       }
       else{

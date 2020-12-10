@@ -23,6 +23,7 @@ export class RootService {
         this._generalService.openSnackBar({message:'El nombre de usuario ingresado, ya se encuentra registrado.'});
       }else{
         data.role = 'admin';
+        data.enabled = true;
         this.userRef = this.firebase.object(`users/${username}`);
         this.userRef.set(data)
         .then(res => {
@@ -33,6 +34,22 @@ export class RootService {
         });
       }
       subscriptor.unsubscribe();
+    })
+  }
+
+  getAdmins(){
+    this.usersRef = this.firebase.list('users', ref => ref.orderByChild('role').equalTo('admin'));
+    return this.usersRef.valueChanges();
+  }
+
+  updateStatusAdmin(admin:any){
+    this.userRef = this.firebase.object(`users/${admin.username}`);
+    this.userRef.update(admin)
+    .then(response =>{
+      this._generalService.openSnackBar({message:'Se ha actualizado correctamente el estado del usuario.'});
+    })
+    .catch(err => {
+      this._generalService.openSnackBar({message:'Ha ocurrido un error al actualizar el estado.'});
     })
   }
 }

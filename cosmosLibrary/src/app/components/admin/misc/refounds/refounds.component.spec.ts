@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainAdminComponent } from './main-admin.component';
+import { RefoundsComponent } from './refounds.component';
 
-describe('MainAdminComponent', () => {
-  let component: MainAdminComponent;
-  let fixture: ComponentFixture<MainAdminComponent>;
+describe('RefoundsComponent', () => {
+  let component: RefoundsComponent;
+  let fixture: ComponentFixture<RefoundsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainAdminComponent ]
+      declarations: [ RefoundsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainAdminComponent);
+    fixture = TestBed.createComponent(RefoundsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

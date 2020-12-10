@@ -1,27 +1,58 @@
 <div class="container-fluid bg-color">
-    <app-header></app-header>
-
-<div class="row mt-4">
-
-    <div class="col-lg-2 col-md-3 col-sm-4 mb-3" *ngFor='let book of books'>
-        <div class="card">
-            <img class="card-img-top" [src]="book.front_image" alt="">
-            <div class="card-body">
-                <h4 class="card-title">
-                {{book.title}}
-                </h4>
-                <p class="card-text">
-                    Autor: {{book.author}} <br> 
-                    Género: {{book.topic}} <br>
-                    Idioma: {{book.language}} <br>
-                    Editorial: {{book.editorial}}
-                </p>
-            </div>
-            <div class="footer d-flex  justify-content-around mb-3">
-                <div class="bg-icon" (click)="deleteBook(book)"><mat-icon [inline]=true>delete</mat-icon></div>
-                <div class="bg-icon" (click)="editBook(book)"><mat-icon [inline]=true>edit</mat-icon></div>
-            </div>
-            
-        </div>
+    <div class="menu">
+        <div class="bg-icon1" [matMenuTriggerFor]="menu"><mat-icon [inline]=true>menu</mat-icon></div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="goTo('add-book')">
+                <mat-icon>library_add</mat-icon>
+                <span>Agregar</span>
+            </button>
+            <button mat-menu-item (click)="goTo('sold-out')">
+                <mat-icon>remove_shopping_cart</mat-icon>
+                <span>Agotados</span>
+            </button>
+            <button mat-menu-item (click)="goTo('refound-request')">
+                <mat-icon>compare_arrows</mat-icon>
+                <span>Devoluciones</span>
+            </button>
+            <button mat-menu-item (click)="goTo('update-admin')">
+                <mat-icon>account_circle</mat-icon>
+                <span>Perfil</span>
+            </button>
+            <button mat-menu-item (click)="logOut()">
+                <mat-icon>arrow_back_ios</mat-icon>
+                <span>Salir</span>
+            </button>
+        </mat-menu>
     </div>
-</div>  
+
+    <app-header></app-header>
+    <div class="container">
+        <div class="row mt-4">
+
+            <div class="col-lg-3 col-md-3 col-sm-4 mb-3" *ngFor='let book of books'>
+                <div class="card">
+                    <img class="card-img-top" [src]="book.front_image" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        {{book.title}}
+                        </h4>
+                        <p class="card-text">
+                            Autor: {{book.author}} <br> 
+                            Género: {{book.topic}} <br>
+                            Idioma: {{book.language}} <br>
+                            Editorial: {{book.editorial}}<br>
+                            Precio: {{book.price}} <br>
+                            Disponibilidad: {{book.available_units}} 
+                        </p>
+                    </div>
+                    <div class="footer d-flex  justify-content-around mb-3">
+                        <div class="bg-icon" (click)="deleteBook(book)"><mat-icon [inline]=true>delete</mat-icon></div>
+                        <div class="bg-icon" (click)="editBook(book)"><mat-icon [inline]=true>edit</mat-icon></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div> 
+    </div>
+    
+</div> 

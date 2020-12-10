@@ -16,6 +16,22 @@ $gray-3:#363636;
     cursor: pointer;
 }
 
+.bg-icon{
+    border-radius: 50%;
+    z-index: 100;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color:rgb(150, 150, 255);
+}
+
+.bg-icon > .mat-icon.mat-icon-inline{
+    font-size: 23px;
+    text-align: center;
+    line-height: 2rem;
+    color: black;
+}
+
 
 
 @include media-breakpoint-only(xs){
@@ -67,6 +83,12 @@ $gray-3:#363636;
         line-height: 3rem;
     }
     
+    .bg-icon1 > .mat-icon.mat-icon-inline{
+        font-size: 23px;
+        text-align: center;
+        line-height: 2rem;
+        color: black;
+    }
     
 }
 
@@ -104,6 +126,13 @@ $gray-3:#363636;
         font-size: 23px;
         color: rgba($color: $gray-2, $alpha: 1);
         line-height: 3rem;
+    }
+
+    .bg-icon1 > .mat-icon.mat-icon-inline{
+        font-size: 23px;
+        text-align: center;
+        line-height: 2rem;
+        color: black;
     }
     
 }

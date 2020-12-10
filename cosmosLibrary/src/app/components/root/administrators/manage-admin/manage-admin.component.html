@@ -1,8 +1,13 @@
 <div class="container-fluid bg-color">
+    <div class="menu">
+        <div class="bg-icon1" (click)="logOut()">
+            <mat-icon [inline]=true>arrow_back</mat-icon>
+        </div>
+    </div>
     <app-header></app-header>
 
     <div class="row">
-        <div class="col-sm-7 col-md-7 col-lg-4 mx-auto">
+        <div class="col-xs-10 col-sm-6 col-md-6 col-lg-4 mx-auto">
             <div class="card-body">
                 <form class="mt-2" #logForm= "ngForm" (ngSubmit)= "createAdmin()" [formGroup]="manageForm">
 
@@ -32,6 +37,17 @@
                         <button class="custom-large-btn" type="submit" [disabled]="manageForm.invalid">Crear admin</button>
                     </div>
                 </form>
+            </div>
+        </div>
+        <div class="col-xs-10 col-sm-6 col-md-6 col-lg-4 mt-4 mx-auto scroll">
+            <div *ngFor='let admin of admins' class="border-card rounded m-2 p-2 d-flex justify-content-between">
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="bg-icon"><mat-icon [inline]=true>person</mat-icon></div>
+                    <p class="pl-1 m-0">{{admin.username}}</p>
+                </div>
+                <div>
+                    <mat-slide-toggle color="primary" [checked]="admin.enabled" (change)="updateStatus(admin)"></mat-slide-toggle>
+                </div>
             </div>
         </div>
     </div>
