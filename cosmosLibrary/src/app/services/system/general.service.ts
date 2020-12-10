@@ -4,11 +4,14 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GeneralSnackBarComponent } from 'src/app/components/system/general-snack-bar/general-snack-bar.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
+
+  shoppingCartValue = new BehaviorSubject(this.shoppingCart);
 
   constructor(
     private _router: Router,
@@ -89,6 +92,19 @@ export class GeneralService {
       }
     }
     return data;
+  }
+
+  set shoppingCart(value) {
+    this.shoppingCartValue.next(value);
+    localStorage.setItem('shopping-cart', JSON.stringify(value));
+  }
+ 
+  get shoppingCart() {
+    return JSON.parse(localStorage.getItem('shopping-cart'));
+  }
+
+  addItemToShoppingCart(item){
+    this.shoppingCart({...this.shoppingCart, item});
   }
 
   saveInfo(name:string, info:any){
