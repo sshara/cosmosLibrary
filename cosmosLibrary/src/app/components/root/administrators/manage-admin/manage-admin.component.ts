@@ -17,6 +17,9 @@ export class ManageAdminComponent implements OnInit {
     confirmationPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]),
   }, {validators: this._passwordMatchValidator.validate})
 
+  public admins:any[];
+  private subscription: any;
+
   constructor(
     private _passwordMatchValidator: PasswordMatchVaildator,
     private _rootService:RootService,
@@ -24,6 +27,7 @@ export class ManageAdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAdmins();
   }
 
   createAdmin(){
@@ -39,6 +43,21 @@ export class ManageAdminComponent implements OnInit {
 
   logOut(){
     this._generalService.clearLocaleData();
+  }
+
+  getAdmins(){
+    this.subscription = this._rootService.getAdmins().subscribe(admins => {
+      this.admins = admins;
+    })
+  }
+
+  updateStatus(admin:any){
+    admin.enabled= !admin.enabled;
+    this._rootService.updateStatusAdmin(admin);
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

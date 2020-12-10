@@ -1,6 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+$blue-200: #9696ff;
+$gray-500: #818080;
+$beige-600: #eff1c7;
+
+$primary:       $blue-200;
+$secondary:     $gray-500;
+
+// @import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/bootstrap-grid';
+
+
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$cosmos-blue: (
+  50:#e7e6ff,
+  100:#c2bfff,
+  200: #9696ff,
+  300:#696df4,
+  400: #4d4ee3,
+  500:#302bd1,
+  600: #2b22c6,
+  700:#2214b9,
+  800: #1b00ac,
+  900: #0a0082,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+$cosmos-gray: (
+  50:#fdfbfb,
+  100:#f8f7f7,
+  200: #f3f2f2,
+  300:#ebeaea,
+  400: #c9c8c8,
+  500:#abaaaa,
+  600:#818080,
+  700:#6c6b6b,
+  800: #4d4c4c,
+  900: #2b2a2a,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text
+  )
+);
+
+$cosmos-app-primary: mat-palette($cosmos-blue, 200);
+$cosmos-app-accent:  mat-palette($cosmos-gray, 600);
+
+
+$cosmos-app-warn:mat-palette($mat-red);
+
+$cosmos-app-theme: mat-light-theme((
+  color: (
+    primary: $cosmos-app-primary,
+    accent: $cosmos-app-accent,
+    warn: $cosmos-app-warn,  
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($cosmos-app-theme);
+
+
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -132,16 +217,11 @@ button:focus{
     height: 0;
 }
 
-.mat-checkbox-inner-container{
-    position: inherit !important; 
-    width: 0px!important; 
-}
-
 .mat-checkbox .mat-checkbox-frame {
     border-radius: 5px;
     width: 20px;
     height: 20px;
-    border:2px solid rgba($color:$gray-2, $alpha: 1);
+    border:2px solid rgba($color: $gray-2, $alpha: 1);
     background-color: transparent;
 }
 
@@ -149,13 +229,13 @@ button:focus{
     width: 20px;
     height: 20px;
     border-radius: 5px;
-    border:2px solid rgba($color:$gray-2, $alpha: 1);
+    border:2px solid rgba($color: $gray-2, $alpha: 1);
     background-color: transparent;
 }
 
 .mat-checkbox-checkmark-path{
-    stroke:$blue-2 !important;
-    stroke-width: 2;
+    stroke: $gray-2 !important;
+    stroke-width: 3;
 }
 
 .mat-radio-outer-circle {

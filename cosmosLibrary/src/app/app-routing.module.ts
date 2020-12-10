@@ -16,6 +16,8 @@ import { HomeComponent } from './components/main/home/home.component';
 import { HomeGuestComponent } from './components/main/home-guest/home-guest.component';
 import { ShoppingCartComponent } from './components/client/shopping-cart/shopping-cart.component';
 import { HistoryComponent } from './components/client/history/history.component';
+import { RefoundsComponent } from './components/admin/misc/refounds/refounds.component';
+import { PocketComponent } from './components/client/pocket/pocket.component';
 
 const routes: Routes = [
 
@@ -34,12 +36,14 @@ const routes: Routes = [
   {path: 'manage-books', canActivate:[NavigationGuard], component:ManageBookComponent},
   {path: 'update-admin', canActivate:[NavigationGuard], component:ChangeAdminPasswordComponent},
   {path: 'sold-out', canActivate:[NavigationGuard], component:HistoricalSoldOutComponent},
+  {path: 'refound-request', canActivate:[NavigationGuard], component:RefoundsComponent},
 
   //client routes
   {path: 'profile-client', canActivate:[NavigationGuard], component:ProfileComponent},
   {path: 'home-client', canActivate:[NavigationGuard], component:HomeComponent},
   {path: 'shopping-cart', canActivate:[NavigationGuard], component:ShoppingCartComponent},
-  {path: 'history-cient', canActivate:[NavigationGuard], component:HistoryComponent},
+  {path: 'history-client', canActivate:[NavigationGuard], component:HistoryComponent},
+  {path: 'pocket-client', canActivate:[NavigationGuard], component:PocketComponent},
   
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

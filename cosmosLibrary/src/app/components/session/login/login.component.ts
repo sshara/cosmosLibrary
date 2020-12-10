@@ -38,11 +38,18 @@ export class LoginComponent implements OnInit {
         this._generalService.saveInfo('identity', identity);
         console.log(this._generalService.loadInfo('identity'))
         if(user.role === 'admin'){
-          if(user.email){
-            this.goTo('home');
-          }else{
-            this.goTo('update-admin');
+          if(user.enabled === true){
+            if(user.email){
+              this.goTo('home');
+            }else{
+              this.goTo('update-admin');
+            }
           }
+          else{
+            this._generalService.deleteInfo('identity');
+            this._generalService.openSnackBar({message:'El usuario no esta activo'});
+          }
+          
         }
         else{
           this.goTo('home');

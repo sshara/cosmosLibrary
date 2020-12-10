@@ -12,15 +12,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatToolbarModule} from '@angular/material/toolbar'; 
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatDividerModule} from '@angular/material/divider'; 
 import {MatListModule} from '@angular/material/list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSortModule} from '@angular/material/sort';
@@ -30,7 +26,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatStepperModule} from '@angular/material/stepper';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -64,6 +59,8 @@ import { ManageAdminComponent } from './components/root/administrators/manage-ad
 import { InputRadioComponent } from './components/system/input-radio/input-radio.component';
 import { HomeGuestComponent } from './components/main/home-guest/home-guest.component';
 import { HistoryComponent } from './components/client/history/history.component';
+import { RefoundsComponent } from './components/admin/misc/refounds/refounds.component';
+import { PocketComponent } from './components/client/pocket/pocket.component';
 
 
 @NgModule({
@@ -93,6 +90,8 @@ import { HistoryComponent } from './components/client/history/history.component'
     HomeGuestComponent,
     FilterByPipe,
     HistoryComponent,
+    RefoundsComponent,
+    PocketComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,15 +105,11 @@ import { HistoryComponent } from './components/client/history/history.component'
     MatTabsModule,
     MatExpansionModule,
     MatDialogModule,
-    MatGridListModule,
     MatCheckboxModule,
-    MatCardModule,
     MatTableModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatDividerModule,
-    MatToolbarModule, 
-    MatSidenavModule, 
+    MatDividerModule,  
     MatListModule,
     MatButtonToggleModule,
     MatSortModule,
@@ -125,7 +120,6 @@ import { HistoryComponent } from './components/client/history/history.component'
     MatTooltipModule,
     MatSlideToggleModule,
     MatStepperModule,
-    MatProgressBarModule,
     FormsModule, 
     ReactiveFormsModule,
     MatRadioModule,

@@ -46,12 +46,12 @@ export class NavigationGuard implements CanActivate {
         
       }
       else if(role === 'admin'){
-        if(nextRoute === 'manage-books' || nextRoute ===  'add-book' || nextRoute === 'edit-book' || nextRoute === 'update-admin' || nextRoute === 'sold-out'){
+        if(nextRoute === 'manage-books' || nextRoute ===  'add-book' || nextRoute === 'edit-book' || nextRoute === 'update-admin' || nextRoute === 'sold-out' || nextRoute === 'refound-request'){
           return true
         }
       }
       else if(role === 'client'){
-        if(nextRoute === 'profile-client' || nextRoute ===  'home-client' || nextRoute === 'shopping-cart' || nextRoute === 'history-cient'){
+        if(nextRoute === 'profile-client' || nextRoute ===  'home-client' || nextRoute === 'shopping-cart' || nextRoute === 'history-client' || nextRoute === 'pocket-client'){
           return true
         }
       }
