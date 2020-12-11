@@ -198,7 +198,7 @@ export class GeneralService {
 
   clearLocaleData(redirectTo:string = 'home') : void {
     localStorage.removeItem('identity');
-    this.dataUserSubscription.unsubscribe();
+    if (this.dataUserSubscription) this.dataUserSubscription.unsubscribe();
     if (redirectTo) this._router.navigate([redirectTo]);
     this.openSnackBar({message:'Se ha cerrado session correctamente'});
   }
