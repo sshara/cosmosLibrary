@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/services/system/general.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pocket',
@@ -8,7 +9,14 @@ import { GeneralService } from 'src/app/services/system/general.service';
 })
 export class PocketComponent implements OnInit {
 
-  constructor(private _generalService:GeneralService) { }
+  buyTokensForm = new FormGroup({
+    tokens: new FormControl('', [Validators.required])
+  });
+
+  public tokens:string;
+  constructor(private _generalService:GeneralService) { 
+    this.tokens = '2000000';
+  }
 
   ngOnInit(): void {
   }
@@ -20,5 +28,7 @@ export class PocketComponent implements OnInit {
   logOut(){
     this._generalService.clearLocaleData();
   }
+
+  buyTokens(){}
 
 }
