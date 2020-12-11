@@ -33,14 +33,14 @@ export class HomeGuestComponent implements OnInit, OnDestroy {
 
   getBooks(){
     let subscripBooks = this._adminService.getBooks().subscribe(books => {
-      this.books = books;
+      this.books = books.filter(book => book.available_units != "0");
     });
     this._subscription.add(subscripBooks);
   }
 
   getNews(){
     this._subscription = this._clientService.getNews().subscribe(books => {
-      this.news = books;
+      this.news = books.filter(book => book.available_units != "0");
     });
   }
 

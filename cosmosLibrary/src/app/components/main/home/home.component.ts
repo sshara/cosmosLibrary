@@ -34,13 +34,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getSuggestedBooks(){
     this.subscripSuggested = this._clientService.getSuggestedBooks().subscribe(books => {
-      this.suggestedBooks = books;
+      this.suggestedBooks = books.filter(book => book.available_units != "0");
     })
   }
 
   getBooks(){
     this.subscripBooks = this._adminService.getBooks().subscribe(books => {
-      this.books = books;
+      this.books = books.filter(book => book.available_units != "0");
     })
   }
 

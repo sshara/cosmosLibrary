@@ -32,7 +32,17 @@ $gray-3:#363636;
     color: black;
 }
 
-
+.zoom{
+    -webkit-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+    overflow: hidden;
+}
+  
+.zoom:hover{
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
 @include media-breakpoint-only(xs){
     .disposition0{

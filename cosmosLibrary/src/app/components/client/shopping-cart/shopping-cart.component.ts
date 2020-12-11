@@ -10,14 +10,28 @@ import { GeneralService } from 'src/app/services/system/general.service';
 export class ShoppingCartComponent implements OnInit {
 
   public items:any[];
+  public shoppingcart:any;
+
   constructor(
     private _generalService:GeneralService,
     private _clientService: ClientService
     ) { 
-      this.items = [{front_image:'/assets/images/portada1.jpg', name:'Las luces de bohemia', price:'9', amount:'1', total:'9'}]
+      this.items = []
+      this.shoppingcart = this._generalService.shoppingCart;
+      console.log(this.shoppingcart);
     }
 
   ngOnInit(): void {
+    this.getItems();
+  }
+
+  getItems(){
+    this._clientService.getItems().forEach(item => {
+      let subscription = item.subscribe(value => {
+        this.items.push(value);
+        subscription.unsubscribe();
+      })
+    })
   }
 
 
@@ -44,5 +58,8 @@ export class ShoppingCartComponent implements OnInit {
   logOut(){
     this._generalService.clearLocaleData();
   }
+
+  Buy(){}
+  
 
 }

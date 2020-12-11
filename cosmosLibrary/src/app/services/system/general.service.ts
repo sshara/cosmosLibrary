@@ -17,7 +17,8 @@ export class GeneralService {
     private _router: Router,
     private _snackBar: MatSnackBar,
     private _dialog: MatDialog,
-    private _http: HttpClient) { }
+    private _http: HttpClient) { 
+    }
 
   goTo(route: string): void {
     this._router.navigate(['/'+route]);
@@ -106,13 +107,13 @@ export class GeneralService {
   }
 
   set shoppingCart(value) {
+    console.log(this.shoppingCartValue)
     this.shoppingCartValue.next(value);
     localStorage.setItem('shopping-cart', JSON.stringify(value));
   }
  
   get shoppingCart() {
-    if(! JSON.parse(localStorage.getItem('shopping-cart')) ) this.shoppingCart = {items:{}, total:0};
-    return JSON.parse(localStorage.getItem('shopping-cart'));
+    return JSON.parse(localStorage.getItem('shopping-cart')) || {items:{}, total:0};
   }
 
   addItemToShoppingCart(item){
