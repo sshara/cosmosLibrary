@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/services/admin.service';
 export class HomeGuestComponent implements OnInit {
 
   public parameter:string;
+  public amount:any;
   public books:any[];
 
   constructor(
@@ -18,10 +19,18 @@ export class HomeGuestComponent implements OnInit {
   ) {
     this.parameter = '';
     this.books = [];
+    this.amount = 0;
    }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
+    this.getShoppingCartInfo();
     this.getBooks();
+  }
+
+  getShoppingCartInfo(){
+    let subscription = this._generalService.shoppingCartValue.subscribe(shoppingCart =>{
+      this.amount = Object.keys(shoppingCart.items).length;
+    })
   }
 
   getBooks(){
@@ -40,8 +49,8 @@ export class HomeGuestComponent implements OnInit {
   }
 
   openshoppingcart(){
-    this._generalService.openSnackBar({message:'Para ver tu carrito de compras debes registrarte'});
-    this.goTo('signup');
+    this._generalService.openSnackBar({message:'Para ver tu carrito de compras, primero debes de inicar sesión.'});
+    this.goTo('login');
   }
 
 }

@@ -100,19 +100,20 @@ export class GeneralService {
   }
  
   get shoppingCart() {
+    if(! JSON.parse(localStorage.getItem('shopping-cart')) ) this.shoppingCart = {items:{}, total:0};
     return JSON.parse(localStorage.getItem('shopping-cart'));
   }
 
   addItemToShoppingCart(item){
     let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
     newShoppingCart.items[item.isbn] = 1;
-    this.shoppingCart(newShoppingCart);
+    this.shoppingCart = newShoppingCart ;
   }
 
   removeItemToShoppingCart(item){
     let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
     delete newShoppingCart.items[item.isbn];
-    this.shoppingCart(newShoppingCart);
+    this.shoppingCart = newShoppingCart;
   }
 
   saveInfo(name:string, info:any){
