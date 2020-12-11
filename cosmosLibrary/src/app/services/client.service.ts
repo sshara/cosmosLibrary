@@ -148,7 +148,7 @@ export class ClientService {
   buyTokens(amount){
     let { username, coins } = this._generalService.loadInfo('identity');
     this.userRef = this.firebase.object(`users/${username}`);
-    this.userRef.update({coins:(coins || 0) + amount})
+    this.userRef.update({coins:(parseInt(coins) || 0) + parseInt(amount)})
     .then(response=>{
       this._generalService.openSnackBar({message:'Se ha realizado la compra satisfactoriamente.'});
     })
