@@ -31,6 +31,12 @@
 
                     <div *ngIf="isFormError()" class="alert alert-danger" role="alert">
                         <p *ngIf="manageForm.errors.noMatchingPassword">Las contraseñas no coinciden.</p>
+                        <p *ngIf="manageForm.errors.noSpecialNumberOrLetterCharacters">
+                            La contraseña debe contener por lo menos: <br>
+                            * Un caracter especial. <br>
+                            * Una letra. <br>
+                            * Un número. <br>
+                        </p>
                     </div>
                     
                     <div class="disposition1 mt-2">

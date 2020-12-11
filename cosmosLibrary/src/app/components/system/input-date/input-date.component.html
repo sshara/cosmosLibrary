@@ -1,9 +1,12 @@
 <div class="form-group1 disposition-input">
     <p class="text-dark mb-0">{{headerText}}</p>
     <div class="cont-date">
-        <input matInput [matDatepicker]="picker1" class="form-control1" [formControl]="control">
+        <input matInput [matDatepicker]="picker1" class="form-control1" [formControl]="control" [ngClass]="{'is-invalid': showError()}">
         <mat-datepicker-toggle class="touch" matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker1></mat-datepicker>
+    </div>
+    <div *ngIf="dateError" class="text-danger text-size">
+        <p>La fecha seleccionada no es válida.</p>
     </div>
     
 </div>

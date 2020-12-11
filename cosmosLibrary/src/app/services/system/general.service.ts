@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class GeneralService {
 
   shoppingCartValue = new BehaviorSubject(this.shoppingCart);
+  timeOutBooking = 5*60*1000;
   //cart =  {items:{isbn:amount}, total:number } 
   constructor(
     private _router: Router,
@@ -76,6 +77,17 @@ export class GeneralService {
     return data;
   }
 
+  randomString(length, chars) {
+    var mask = '';
+    if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
+    if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (chars.indexOf('#') > -1) mask += '0123456789';
+    if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+    var result = '';
+    for (var i = length; i > 0; --i) result += mask[Math.floor(Math.random() * mask.length)];
+    return result;
+}
+
   deletePasswords(data:any){
     for(let key of Object.keys(data)){
       if(key.toLowerCase().includes('password')){
@@ -96,7 +108,6 @@ export class GeneralService {
   }
 
   set shoppingCart(value) {
-    console.log(this.shoppingCartValue)
     this.shoppingCartValue.next(value);
     localStorage.setItem('shopping-cart', JSON.stringify(value));
   }
@@ -107,14 +118,36 @@ export class GeneralService {
 
   addItemToShoppingCart(item){
     let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
-    newShoppingCart.items[item.isbn] = 1;
-    this.shoppingCart = newShoppingCart ;
+    if (Object.keys(newShoppingCart.items).length <= 5) newShoppingCart.items[item.isbn] = {amount:1, price: parseInt(item.price), total:parseInt(item.price)};
+    newShoppingCart.total += parseInt(item.price);
+    this.shoppingCart = newShoppingCart;
   }
 
   removeItemToShoppingCart(item){
     let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
     delete newShoppingCart.items[item.isbn];
+    newShoppingCart.total -= parseInt(item.price) * parseInt(item.amount);
+    if(Object.keys(newShoppingCart.items).length === 0) newShoppingCart.total = 0;
     this.shoppingCart = newShoppingCart;
+  }
+
+  updateItemQuantityShoppingCart(item, quantity){
+    let newShoppingCart = this.shoppingCart;
+    newShoppingCart.items[item.isbn].amount += quantity;
+    if (newShoppingCart.items[item.isbn].amount > 3) {
+      newShoppingCart.items[item.isbn].amount = 3;
+      quantity = 0;
+    }
+    if (newShoppingCart.items[item.isbn].amount < 1){
+      newShoppingCart.items[item.isbn].amount = 1;
+      quantity = 0;
+    } 
+
+    newShoppingCart.items[item.isbn].total = newShoppingCart.items[item.isbn].amount * newShoppingCart.items[item.isbn].price;
+    newShoppingCart.total += quantity * newShoppingCart.items[item.isbn].price;
+    this.shoppingCart = newShoppingCart;
+
+    return newShoppingCart.items[item.isbn];
   }
 
   saveInfo(name:string, info:any){
@@ -127,6 +160,28 @@ export class GeneralService {
 
   deleteInfo(name:string){
     localStorage.removeItem(name);
+  }
+
+  dateYearsBefore(years:number, date:Date){
+    let currentDate = new Date();
+    currentDate.setFullYear(2020-years);
+    return this.compareDates(currentDate, date);
+  }
+
+  compareDates(current:Date, selected:Date){
+    if(current.getFullYear() < selected.getFullYear()) return false;
+    else if(current.getFullYear() == selected.getFullYear()){
+      if(current.getMonth() < selected.getMonth()) return false;
+      else if(current.getMonth() == selected.getMonth()){
+        if(current.getDay() < selected.getDay()) return false;
+      }
+    }
+    return true;
+  }
+
+  clearShoppingCart(redirectTo:string = 'home'){
+    this.shoppingCart = {items:{}, total:0};
+    if (redirectTo) this._router.navigate([redirectTo]);
   }
 
   clearLocaleData(redirectTo:string = 'home') : void {
