@@ -46,7 +46,7 @@
                                     <p class="mb-0">Cantidad: </p>
                                     <div class="d-flex justify-content-around flex-grow-1">
                                         <mat-icon [inline]=true (click)="updateAmount(-1, item)">remove</mat-icon>
-                                        <div>{{item.amount || 0}}</div>
+                                        <div>{{item.amount || 1}}</div>
                                         <mat-icon [inline]=true (click)="updateAmount(1, item)">add</mat-icon>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="disposition1 mt-3">
-            <p class="d-flex justify-content-center m-0">Total:</p>
+            <p class="d-flex justify-content-center m-0">Total: {{shoppingcart.total}}</p>
             <button class="custom-large-btn" type="button" (click)="Buy()">Confirmar compra</button>
         </div>
         

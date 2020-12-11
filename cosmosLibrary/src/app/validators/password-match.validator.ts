@@ -8,6 +8,7 @@ export class PasswordMatchVaildator implements Validator {
     const { password, confirmationPassword } = formGroup.value;
 
     if (password === confirmationPassword) {
+      if(!password) return null;
       if(password.match(/[A-Z]/gi) && password.match(/\d/g) && ((password.match(/\W/g) || []).length > (password.match(/\s/g) || []).length) ){
         return null;
       }else{

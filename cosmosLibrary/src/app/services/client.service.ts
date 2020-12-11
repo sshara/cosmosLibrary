@@ -12,6 +12,8 @@ export class ClientService {
   refoundsRef:AngularFireList<any>;
   shoppingRef:AngularFireObject<any>;
   shoppingsRef:AngularFireList<any>;
+  bookingRef:AngularFireObject<any>;
+  bookingsRef:AngularFireList<any>;
   usersRef: AngularFireList<any>;
   userRef: AngularFireObject<any>;
   booksRef: AngularFireList<any>;
@@ -94,10 +96,45 @@ export class ClientService {
     items.forEach(item => {
       let data = item;
       data.refounded = false;
-      this.shoppingsRef.set(data.isbn, data);
+      this.shoppingsRef.set(data.isbn, data)
+      .then(response =>{
+        this._generalService.clearShoppingCart();
+        this._generalService.openSnackBar({message:'Se ha realizado la compra satisfactoriamente.'});
+      })
+      .catch(err => {
+        this._generalService.openSnackBar({message:'Ha ocurrido un error al realizar la compra.'});
+      })
+      this.bookRef = this.firebase.object(`books/${data.isbn}`); 
+      let left = parseInt(data.available_units)-parseInt(data.amount);
+      if(left < 0) left = 0
+      this.bookRef.update({available_units:left});
     });
   }
-  
+
+  booking(book){
+    let { username } = this._generalService.loadInfo('identity');
+    this.bookingsRef = this.firebase.list(`users/${username}/bookings`);
+    let data = book;
+    data.claimed = false;
+    let reference = this.bookingsRef;
+    let generalServ = this._generalService;
+    this.bookingsRef.set(book.isbn, data)
+    .then(response =>{
+      this._generalService.openSnackBar({message:'Se ha realizado la reserva satisfactoriamente, recuerda que tienes un tiempo límite para comprarlo.'});
+      setInterval(function(){
+        reference.remove(book.isbn);
+        generalServ.openSnackBar({message:`El plazo máximo para comprar el libro ${book.title}, se ha acabado.`});
+      }, this._generalService.timeOutBooking);
+    })
+    .catch(err => {
+      this._generalService.openSnackBar({message:'Ha ocurrido un error al realizar la reserva.'});
+    })
+    this.bookRef = this.firebase.object(`books/${data.isbn}`);
+    let left = parseInt(data.available_units)-1;
+    if(left < 0) left = 0
+    this.bookRef.update({available_units:left});
+  }
+
   getItems(){
     let books:any[] = [];
     let items  = Object.keys(this._generalService.shoppingCart.items);
@@ -106,6 +143,18 @@ export class ClientService {
       books.push(this.bookRef.valueChanges());
     }
     return books;
+  }
+
+  buyTokens(amount){
+    let { username, coins } = this._generalService.loadInfo('identity');
+    this.userRef = this.firebase.object(`users/${username}`);
+    this.userRef.update({coins:(coins || 0) + amount})
+    .then(response=>{
+      this._generalService.openSnackBar({message:'Se ha realizado la compra satisfactoriamente.'});
+    })
+    .catch(err=>{
+      this._generalService.openSnackBar({message:'Hubo un problema al realizar la transacción.'});
+    })
   }
 
 }

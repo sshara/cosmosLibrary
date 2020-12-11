@@ -48,10 +48,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._generalService.goTo(route);
   }
 
-  book(book:any){}
+  booking(book:any){
+    this._clientService.booking(book);
+  }
 
   addtoShoppingcart(book:any){
-
+    this._generalService.addItemToShoppingCart(book);
   }
 
   logOut(){

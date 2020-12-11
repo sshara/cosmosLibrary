@@ -28,7 +28,10 @@ export class ShoppingCartComponent implements OnInit {
   getItems(){
     this._clientService.getItems().forEach(item => {
       let subscription = item.subscribe(value => {
-        this.items.push(value);
+        let data = value;
+        data.amount = parseInt(this.shoppingcart.items[value.isbn].amount || 1);
+        data.total = parseInt(data.amount) * parseInt(data.price);
+        this.items.push(data);
         subscription.unsubscribe();
       })
     })
@@ -37,18 +40,29 @@ export class ShoppingCartComponent implements OnInit {
 
   deleteItem(item:any, position:number){
     let {amount, price} = item;
-    //this.shoppingCart.total -= amount * price;
-    //delete this.shoppingCart.items[item.id];
+    this.shoppingcart.total -= amount * price;
+    delete this.shoppingcart.items[item.id];
     this.items.splice(position,1);
-    //this.disabledByItems = !this.items.length;
+
+    this._generalService.removeItemToShoppingCart(item);
   }
 
   updateAmount(amount:number, item:any):void{
+    
+    this._generalService.updateItemQuantityShoppingCart(item, amount);
+
     item.amount = item.amount + amount;
-    if(item.amount < 0) item.amount = amount = 0;
+    if(item.amount < 1){
+      item.amount = 1;
+      amount = 0;
+    } 
+    if(item.amount > 3){
+      item.amount = 3; 
+      amount = 0;
+    } 
     item.total = item.amount * item.price;
 
-    //this.shoppingCart.total += amount * item.price;
+    this.shoppingcart.total += amount * item.price;
   }
 
   goTo(route:string){
@@ -59,7 +73,9 @@ export class ShoppingCartComponent implements OnInit {
     this._generalService.clearLocaleData();
   }
 
-  Buy(){}
+  Buy(){
+    this._clientService.buyItems(this.items);
+  }
   
 
 }

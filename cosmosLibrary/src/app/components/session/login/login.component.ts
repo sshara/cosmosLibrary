@@ -34,9 +34,8 @@ export class LoginComponent implements OnInit {
         return;
       }
       if(password === user.password){
-        let identity = {username:user.username, role:user.role, topic:user.topic};
+        let identity = {username:user.username, role:user.role, topic:user.topic, coins:user.coins};
         this._generalService.saveInfo('identity', identity);
-        console.log(this._generalService.loadInfo('identity'))
         if(user.role === 'admin'){
           if(user.enabled === true){
             if(user.email){

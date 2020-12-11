@@ -16,7 +16,9 @@
 
                 <app-input-date class="mb-2"
                 [headerText]="'Fecha de nacimiento'" 
-                [control]="signupForm.get('birthdate')"></app-input-date>
+                [control]="signupForm.get('birthdate')"
+                [years] = "18"
+                ></app-input-date>
 
                 <app-input-select class="mb-2"
                 [headerText]="'Género'"
