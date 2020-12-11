@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {
     this.parameter = '';
     this.books = [];
+    this.suggestedBooks = [];
    }
   
 

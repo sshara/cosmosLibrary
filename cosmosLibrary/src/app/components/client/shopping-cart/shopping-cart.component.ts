@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from 'src/app/services/client.service';
 import { GeneralService } from 'src/app/services/system/general.service';
 
 @Component({
@@ -8,9 +9,32 @@ import { GeneralService } from 'src/app/services/system/general.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor(private _generalService:GeneralService) { }
+  public items:any[];
+  constructor(
+    private _generalService:GeneralService,
+    private _clientService: ClientService
+    ) { 
+      this.items = [{front_image:'/assets/images/portada1.jpg', name:'Las luces de bohemia', price:'9', amount:'1', total:'9'}]
+    }
 
   ngOnInit(): void {
+  }
+
+
+  deleteItem(item:any, position:number){
+    let {amount, price} = item;
+    //this.shoppingCart.total -= amount * price;
+    //delete this.shoppingCart.items[item.id];
+    this.items.splice(position,1);
+    //this.disabledByItems = !this.items.length;
+  }
+
+  updateAmount(amount:number, item:any):void{
+    item.amount = item.amount + amount;
+    if(item.amount < 0) item.amount = amount = 0;
+    item.total = item.amount * item.price;
+
+    //this.shoppingCart.total += amount * item.price;
   }
 
   goTo(route:string){

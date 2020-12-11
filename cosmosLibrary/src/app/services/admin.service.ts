@@ -184,6 +184,10 @@ export class AdminService {
       subscriptor.unsubscribe();
     })
     
-    
+  }
+
+  getSoldout(){
+    this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('available_units').equalTo('0'));
+    return this.booksRef.valueChanges();
   }
 }
