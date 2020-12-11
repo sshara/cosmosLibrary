@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit {
     private _generalService:GeneralService,
     private _clientService: ClientService
     ) { 
-      this.items = [{front_image:'/assets/images/portada1.jpg', name:'Las luces de bohemia', price:'9', amount:'1', total:'9'}]
+      this.items = [{front_image:'https://thumbs.dreamstime.com/b/toon-pig-punk-13358888.jpg', name:'Las luces de bohemia', price:'9', amount:'1', total:'9'}]
     }
 
   ngOnInit(): void {
