@@ -59,4 +59,10 @@ export class ClientService {
     this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('topic').equalTo(topic));
     return this.booksRef.valueChanges();
   }
+
+  getNews(){
+    this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('on_news').equalTo(true));
+    return this.booksRef.valueChanges();
+  }
+
 }

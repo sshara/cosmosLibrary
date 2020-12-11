@@ -26,7 +26,35 @@
     </div>
     
     <app-header></app-header>
+
     <div class="container py-5">
+        <div class="row">
+
+            <div *ngFor="let item of items; index as j">
+                <div [style.background-image] ="'url(\''+ item.front_image +'\')'"></div>
+                <div>
+                    <div>
+                        <mat-icon [inline]=true (click)="deleteItem(item, j)">clear</mat-icon>
+                    </div>
+                    <div>
+                        <div>
+                            <p>{{item.name}}</p>
+                            <p>Valor por unidad: ${{item.price}}</p>
+                        </div>
+        
+                        <div>
+                            <h2>$ {{item.total}}</h2>
+                            <div>
+                                <p>Cantidad: </p>
+                                <mat-icon [inline]=true (click)="updateAmount(-1, item)">remove</mat-icon>
+                                <div>{{item.amount || 0}}</div>
+                                <mat-icon [inline]=true (click)="updateAmount(1, item)">add</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </div>
 </div>
