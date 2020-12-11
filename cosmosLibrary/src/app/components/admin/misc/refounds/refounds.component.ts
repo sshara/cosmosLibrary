@@ -28,7 +28,9 @@ export class RefoundsComponent implements OnInit, OnDestroy {
     })
   }
 
-  resolveRefound(resolve:number){}
+  resolveRefound(resolve:number, item:any){
+    this._adminService.acceptRefound(resolve, item);
+  }
 
   goTo(route:string){
     this._generalService.goTo(route);

@@ -193,12 +193,40 @@ export class AdminService {
     return this.booksRef.valueChanges();
   }
 
-  acceptRefound(refound){
+  acceptRefound(type, refound){
+    let {username , isbn} = refound;
+    this.refoundRef = this.firebase.object(`refounds/${username}-${isbn}`);
+    if(type == 1){
+      this.refoundRef.update({accepted:true})
+      .then(response => {
+        this._generalService.openSnackBar({message:'Se ha aceptado la solicitud de reembolso.'});
+      })
+      .catch(err =>{
+        this._generalService.openSnackBar({message:'Ocurrió un error al aceptar la solicitud de reembolso.'});
+      })
 
+      this.bookRef = this.firebase.object(`books/${isbn}`);
+      this.bookRef.update({available_units:refound.available_units});
+
+      this.userRef = this.firebase.object(`users/${username}`);
+      let subscriptor = this.userRef.valueChanges().subscribe(user =>{
+        this.userRef.update({coins: parseInt(user.coins)+ parseInt(refound.price)});
+        subscriptor.unsubscribe();
+      });
+      
+    }else if (type == 0){
+      this.refoundRef.remove()
+      .then(response => {
+        this._generalService.openSnackBar({message:'Se ha descartado la solicitud de reembolso.'});
+      })
+      .catch(err =>{
+        this._generalService.openSnackBar({message:'Ocurrió un error al descartar la solicitud de reembolso.'});
+      })
+    }
   }
 
   getRefounds(){
-    this.refoundsRef = this.firebase.list('refounds');
-    return this.refoundRef.valueChanges();
+    this.refoundsRef = this.firebase.list('/refounds', ref => ref.orderByChild('accepted').equalTo(false));
+    return this.refoundsRef.valueChanges();
   }
 }
