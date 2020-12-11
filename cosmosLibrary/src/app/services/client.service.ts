@@ -90,8 +90,8 @@ export class ClientService {
     })
   }
 
-  buyItems(items){
-    let { username } = this._generalService.loadInfo('identity');
+  buyItems(items, total){
+    let { username, coins } = this._generalService.loadInfo('identity');
     this.shoppingsRef = this.firebase.list(`users/${username}/shoppings`);
     items.forEach(item => {
       let data = item;
@@ -108,6 +108,11 @@ export class ClientService {
       let left = parseInt(data.available_units)-parseInt(data.amount);
       if(left < 0) left = 0
       this.bookRef.update({available_units:left});
+
+      this.userRef = this.firebase.object(`users/${username}`); 
+      let leftCoins = parseInt(coins)-parseInt(total);
+      if(leftCoins < 0) leftCoins = 0
+      this.userRef.update({coins:leftCoins});
     });
   }
 

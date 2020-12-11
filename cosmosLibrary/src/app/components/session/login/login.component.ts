@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           }
           else{
             this._generalService.deleteInfo('identity');
-            this._generalService.openSnackBar({message:'El usuario no esta activo'});
+            this._generalService.openSnackBar({message:'El usuario se encuentra inhabilitado.'});
           }
           
         }

@@ -4,7 +4,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { GeneralSnackBarComponent } from 'src/app/components/system/general-snack-bar/general-snack-bar.component';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { AngularFireObject, AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,16 @@ export class GeneralService {
 
   shoppingCartValue = new BehaviorSubject(this.shoppingCart);
   timeOutBooking = 5*60*1000;
+  dataUserSubscription:Subscription;
+  userRef: AngularFireObject<any>;
   //cart =  {items:{isbn:amount}, total:number } 
   constructor(
     private _router: Router,
     private _snackBar: MatSnackBar,
     private _dialog: MatDialog,
-    private _http: HttpClient) { 
+    private _http: HttpClient,
+    private firebase: AngularFireDatabase,
+    ) { 
     }
 
   goTo(route: string): void {
@@ -151,6 +156,13 @@ export class GeneralService {
   }
 
   saveInfo(name:string, info:any){
+    if(name == 'identity' && (!this.dataUserSubscription || this.dataUserSubscription.closed) ){
+      this.userRef = this.firebase.object(`users/${info.username}`);
+      this.dataUserSubscription = this.userRef.valueChanges().subscribe(user => {
+        let identity = {username:user.username, role:user.role, topic:user.topic, coins:user.coins};
+        this.saveInfo('identity', identity);
+      })
+    }
     localStorage.setItem(name, JSON.stringify(info));
   }
 
@@ -186,6 +198,7 @@ export class GeneralService {
 
   clearLocaleData(redirectTo:string = 'home') : void {
     localStorage.removeItem('identity');
+    this.dataUserSubscription.unsubscribe();
     if (redirectTo) this._router.navigate([redirectTo]);
     this.openSnackBar({message:'Se ha cerrado session correctamente'});
   }
