@@ -199,6 +199,6 @@ export class AdminService {
 
   getRefounds(){
     this.refoundsRef = this.firebase.list('refounds');
-    return this.refoundRef.valueChanges();
+    return this.refoundsRef.valueChanges();
   }
 }
