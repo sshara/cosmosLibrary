@@ -25,6 +25,7 @@ export class SessionService {
   signUp(data:any){
     console.log(data);
     data.birthdate = data.birthdate.toString();
+    data.coins = 20;
     let {username, email} = data;
     this.usersRef = this.firebase.list('/users', ref => ref.orderByChild('email').equalTo(email));
     let subscriptor1 = this.usersRef.valueChanges().subscribe(users =>{

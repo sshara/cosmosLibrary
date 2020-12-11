@@ -83,6 +83,8 @@ export class ClientService {
         let data = item;
         data.accepted = false;
         data.message = message;
+        data.isbn = isbn;
+        data.username = username;
         this.refoundRef.set(data);
         this._generalService.openSnackBar({message:'Se ha hecho la solicitud de reembolso.'});
       }
@@ -123,19 +125,24 @@ export class ClientService {
     data.claimed = false;
     let reference = this.bookingsRef;
     let generalServ = this._generalService;
+    let bookReference = this.firebase.object(`books/${data.isbn}`); 
+
+    this.bookRef = this.firebase.object(`books/${data.isbn}`);
+    let left = parseInt(data.available_units)-1;
+
     this.bookingsRef.set(book.isbn, data)
     .then(response =>{
       this._generalService.openSnackBar({message:'Se ha realizado la reserva satisfactoriamente, recuerda que tienes un tiempo límite para comprarlo.'});
       setInterval(function(){
         reference.remove(book.isbn);
         generalServ.openSnackBar({message:`El plazo máximo para comprar el libro ${book.title}, se ha acabado.`});
+        bookReference.update({available_units:left+1});
       }, this._generalService.timeOutBooking);
     })
     .catch(err => {
       this._generalService.openSnackBar({message:'Ha ocurrido un error al realizar la reserva.'});
     })
-    this.bookRef = this.firebase.object(`books/${data.isbn}`);
-    let left = parseInt(data.available_units)-1;
+    
     if(left < 0) left = 0
     this.bookRef.update({available_units:left});
   }
