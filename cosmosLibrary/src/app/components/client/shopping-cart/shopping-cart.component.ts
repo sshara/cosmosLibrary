@@ -74,7 +74,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   Buy(){
-    this._clientService.buyItems(this.items);
+    this._clientService.buyItems(this.items, this.shoppingcart.total);
   }
   
 
