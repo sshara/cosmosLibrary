@@ -1,0 +1,26 @@
+$gray-2: #818080;
+$blue-600:  #2b22c6;
+
+.circle{
+    width: 250px;
+    height: 250px;
+    border: 2px solid $gray-2;
+    border-radius: 50%;
+    background-color: $blue-600;
+    font-size: 23px;
+    color: #fff;
+}
+
+.tokens{
+    position: absolute;
+    float: left;
+    top: 120px;
+    left: 130px;
+    text-align: center;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+

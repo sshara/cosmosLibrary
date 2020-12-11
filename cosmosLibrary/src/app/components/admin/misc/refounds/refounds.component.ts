@@ -9,12 +9,17 @@ import { GeneralService } from 'src/app/services/system/general.service';
 })
 export class RefoundsComponent implements OnInit {
 
+  public refounds:any[];
   constructor(
     private _generalService:GeneralService,
-    private _adminService:AdminService) { }
+    private _adminService:AdminService) {
+      this.refounds = [];
+     }
 
   ngOnInit(): void {
   }
+
+  resolveRefound(resolve:number){}
 
   goTo(route:string){
     this._generalService.goTo(route);

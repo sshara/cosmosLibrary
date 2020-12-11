@@ -24,6 +24,31 @@
 
     <app-header></app-header>
     <div class="container py-5">
+        <div class="row">
+            <div class="col-xs-10 col-sm-6 col-md-6 col-lg-4 d-flex align-items-center justify-content-center mx-auto">
+                <div class="circle">
+                    <p class="tokens">{{tokens}}</p>
+                </div>
+            </div>
+
+            <div class="col-xs-10 col-sm-6 col-md-6 col-lg-4 mx-auto">
+                <div class="card-body">
+                    <form class="mt-2" #tokenForm= "ngForm" (ngSubmit)= "buyTokens()" [formGroup]="buyTokensForm">
+    
+                        <app-input-text 
+                        [headerText]="'Numero de tokens'" 
+                        [inputType]="'text'" 
+                        [control]="buyTokensForm.get('tokens')"
+                        ></app-input-text>
+    
+                        
+                        <div class="disposition1 mt-2">
+                            <button class="custom-large-btn" type="submit" [disabled]="buyTokensForm.invalid">Comprar tokens</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         
     </div>
 </div>

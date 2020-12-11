@@ -26,9 +26,28 @@
     </div>
 
     <app-header></app-header>
-
-    <div class="row mt-4">
-
+    <div class="container py-5">
+        <div class="row mt-4">
+            <div *ngFor="let item of refounds; index as j" class="col-lg-3 col-md-4 col-sm-6 mb-3 mx-auto d-flex border border-secondary p-0">
+                <img class="img-fluid front-page" [src]="item.front_image" alt="">
+                <div class="d-flex flex-column  px-2 m-0">
+                    <div class="d-flex flex-column align-items-start">
+                        <p class="mb-0">
+                            {{item.username}}<br>
+                            {{item.title}}<br>
+                            Isbn: {{item.isbn}}<br>
+                            Precio: ${{item.price}}<br>
+                            Motivo: {{item.reason}}
+                        </p>
+                    </div>
+                    <div class="d-flex  justify-content-around">
+                        <div class="bg-icon zoom" (click)="resolveRefound(0)"><mat-icon [inline]=true>clear</mat-icon></div>
+                        <div class="bg-icon zoom" (click)="resolveRefound(1)"><mat-icon [inline]=true>done</mat-icon></div>
+                    </div>
+                </div>
+            </div>
         
-    </div> 
+        </div> 
+    </div>
+    
 </div> 
