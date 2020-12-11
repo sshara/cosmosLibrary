@@ -11,6 +11,7 @@ export class ClientService {
   usersRef: AngularFireList<any>;
   userRef: AngularFireObject<any>;
   booksRef: AngularFireList<any>;
+  bookRef: AngularFireObject<any>;
 
   constructor(
     private firebase: AngularFireDatabase,
@@ -63,6 +64,16 @@ export class ClientService {
   getNews(){
     this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('on_news').equalTo(true));
     return this.booksRef.valueChanges();
+  }
+
+  getItems(){
+    let books:any[] = [];
+    let items  = Object.keys(this._generalService.shoppingCart.items);
+    for (const item of items) {
+      this.bookRef = this.firebase.object(`/books/${item}`);
+      books.push(this.bookRef.valueChanges());
+    }
+    return books;
   }
 
 }
