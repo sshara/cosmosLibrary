@@ -59,7 +59,7 @@ export class SessionService {
   }
 
   recoverPassword(data:any){
-    data.code = 'a7huJlz4mW';
+    data.code = this._generalService.randomString(24, 'Aa#!');
     let {email,code} = data;
     this.usersRef = this.firebase.list('/users', ref => ref.orderByChild('email').equalTo(email));
     let subscriptor = this.usersRef.valueChanges().subscribe(users =>{

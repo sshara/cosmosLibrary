@@ -8,6 +8,10 @@ import { GeneralService } from './system/general.service';
 })
 export class ClientService {
 
+  refoundRef:AngularFireObject<any>;
+  refoundsRef:AngularFireList<any>;
+  shoppingRef:AngularFireObject<any>;
+  shoppingsRef:AngularFireList<any>;
   usersRef: AngularFireList<any>;
   userRef: AngularFireObject<any>;
   booksRef: AngularFireList<any>;
@@ -63,6 +67,34 @@ export class ClientService {
   getNews(){
     this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('on_news').equalTo(true));
     return this.booksRef.valueChanges();
+  }
+
+  requestRefound(item, message){
+    let { username } = this._generalService.loadInfo('identity');
+    let { isbn } = item;
+    this.refoundRef = this.firebase.object(`refounds/${username}-${isbn}`);
+    let subcription = this.refoundRef.valueChanges().subscribe(refound=>{
+      if(refound){
+        this._generalService.openSnackBar({message:'Ya ha solicitado un reembolso por este libro previamente.'});
+      }else{
+        let data = item;
+        data.accepted = false;
+        data.message = message;
+        this.refoundRef.set(data);
+        this._generalService.openSnackBar({message:'Se ha hecho la solicitud de reembolso.'});
+      }
+      subcription.unsubscribe();
+    })
+  }
+
+  buyItems(items){
+    let { username } = this._generalService.loadInfo('identity');
+    this.shoppingsRef = this.firebase.list(`users/${username}/shoppings`);
+    items.forEach(item => {
+      let data = item;
+      data.refounded = false;
+      this.shoppingsRef.set(data.isbn, data);
+    });
   }
 
 }

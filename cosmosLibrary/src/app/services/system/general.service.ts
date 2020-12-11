@@ -75,6 +75,17 @@ export class GeneralService {
     return data;
   }
 
+  randomString(length, chars) {
+    var mask = '';
+    if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
+    if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (chars.indexOf('#') > -1) mask += '0123456789';
+    if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+    var result = '';
+    for (var i = length; i > 0; --i) result += mask[Math.floor(Math.random() * mask.length)];
+    return result;
+}
+
   deletePasswords(data:any){
     for(let key of Object.keys(data)){
       if(key.toLowerCase().includes('password')){
@@ -106,13 +117,27 @@ export class GeneralService {
 
   addItemToShoppingCart(item){
     let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
-    newShoppingCart.items[item.isbn] = 1;
-    this.shoppingCart = newShoppingCart ;
+    if (Object.keys(newShoppingCart.items).length <= 5) newShoppingCart.items[item.isbn] = 1;
+    this.shoppingCart = newShoppingCart;
   }
 
   removeItemToShoppingCart(item){
     let newShoppingCart = (this.shoppingCart || {items:{}, total:0});
     delete newShoppingCart.items[item.isbn];
+    this.shoppingCart = newShoppingCart;
+  }
+
+  addItemQuantityShoppingCart(item){
+    let newShoppingCart = this.shoppingCart;
+    newShoppingCart.items[item.isbn] += 1;
+    if (newShoppingCart.items[item.isbn] > 3) newShoppingCart.items[item.isbn] = 3;
+    this.shoppingCart = newShoppingCart;
+  }
+
+  removeItemQuantityShoppingCart(item){
+    let newShoppingCart = this.shoppingCart;
+    newShoppingCart.items[item.isbn] -= 1;
+    if (newShoppingCart.items[item.isbn] < 1) newShoppingCart.items[item.isbn] = 1;
     this.shoppingCart = newShoppingCart;
   }
 
