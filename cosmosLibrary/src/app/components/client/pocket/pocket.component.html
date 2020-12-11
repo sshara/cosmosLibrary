@@ -6,10 +6,7 @@
                 <mat-icon>home</mat-icon>
                 <span>Inicio</span>
             </button>
-            <button mat-menu-item (click)="goTo('shopping-cart')">
-                <mat-icon>shopping_cart</mat-icon>
-                <span>Carrito</span>
-            </button>
+            <app-cart (click)="goTo('shopping-cart')"></app-cart>
             <button mat-menu-item (click)="goTo('history-client')">
                 <mat-icon>playlist_add_check</mat-icon>
                 <span>Historial</span>

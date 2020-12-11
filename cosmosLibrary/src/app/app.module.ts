@@ -61,6 +61,8 @@ import { HomeGuestComponent } from './components/main/home-guest/home-guest.comp
 import { HistoryComponent } from './components/client/history/history.component';
 import { RefoundsComponent } from './components/admin/misc/refounds/refounds.component';
 import { PocketComponent } from './components/client/pocket/pocket.component';
+import { CartComponent } from './components/system/cart/cart.component';
+import { RequestsComponent } from './components/system/requests/requests.component';
 
 
 @NgModule({
@@ -92,6 +94,8 @@ import { PocketComponent } from './components/client/pocket/pocket.component';
     HistoryComponent,
     RefoundsComponent,
     PocketComponent,
+    CartComponent,
+    RequestsComponent,
   ],
   imports: [
     BrowserModule,
