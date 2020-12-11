@@ -59,7 +59,10 @@
             </div>
         </div>
         <div class="disposition1 mt-3">
-            <p class="d-flex justify-content-center m-0">Total: {{shoppingcart.total}}</p>
+            <p class="d-flex justify-content-center m-0">
+                Total: {{shoppingcart.total}} <br>
+                Tokens: {{ tokens}}
+            </p>
             <button class="custom-large-btn" type="button" (click)="Buy()">Confirmar compra</button>
         </div>
         

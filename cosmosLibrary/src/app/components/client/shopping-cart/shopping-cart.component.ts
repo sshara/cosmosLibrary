@@ -11,6 +11,7 @@ export class ShoppingCartComponent implements OnInit {
 
   public items:any[];
   public shoppingcart:any;
+  public tokens:any;
 
   constructor(
     private _generalService:GeneralService,
@@ -18,6 +19,7 @@ export class ShoppingCartComponent implements OnInit {
     ) { 
       this.items = []
       this.shoppingcart = this._generalService.shoppingCart;
+      this.tokens = this._generalService.loadInfo('identity').coins;
       console.log(this.shoppingcart);
     }
 

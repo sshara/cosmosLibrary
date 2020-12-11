@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/services/system/general.service';
 import { SessionService } from 'src/app/services/session.service';
-import { GeneralSnackBarComponent } from '../../system/general-snack-bar/general-snack-bar.component';
 
 @Component({
   selector: 'app-login',

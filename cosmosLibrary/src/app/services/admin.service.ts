@@ -11,6 +11,8 @@ export class AdminService {
 
   booksRef: AngularFireList<any>;
   bookRef: AngularFireObject<any>;
+  refoundRef:AngularFireObject<any>;
+  refoundsRef:AngularFireList<any>;
   usersRef: AngularFireList<any>;
   userRef: AngularFireObject<any>;
 
@@ -189,5 +191,14 @@ export class AdminService {
   getSoldout(){
     this.booksRef = this.firebase.list('/books', ref => ref.orderByChild('available_units').equalTo('0'));
     return this.booksRef.valueChanges();
+  }
+
+  acceptRefound(refound){
+
+  }
+
+  getRefounds(){
+    this.refoundsRef = this.firebase.list('refounds');
+    return this.refoundRef.valueChanges();
   }
 }
