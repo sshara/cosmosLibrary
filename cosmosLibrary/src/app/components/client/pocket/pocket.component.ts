@@ -15,7 +15,9 @@ export class PocketComponent implements OnInit {
   });
 
   public tokens:string;
-  constructor(private _generalService:GeneralService, private _clientService: ClientService) { 
+  constructor(
+    private _generalService:GeneralService, 
+    private _clientService: ClientService) { 
     this.tokens = this._generalService.loadInfo('identity').coins;
   }
 
@@ -32,6 +34,10 @@ export class PocketComponent implements OnInit {
 
   buyTokens(){
     this._clientService.buyTokens(this.buyTokensForm.get('tokens').value);
+    setInterval(()=>{
+      this.tokens = this._generalService.loadInfo('identity').coins;
+    }, 1000);
+    
   }
 
 }

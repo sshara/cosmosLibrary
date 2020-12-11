@@ -162,4 +162,15 @@ export class ClientService {
     })
   }
 
+  getShopping(){
+    let { username } = this._generalService.loadInfo('identity');
+    this.booksRef = this.firebase.list(`users/${username}/shoppings`);
+    return this.booksRef.valueChanges();
+  }
+
+  getbookings(){
+    let { username } = this._generalService.loadInfo('identity');
+    this.booksRef = this.firebase.list(`users/${username}/bookings`);
+    return this.booksRef.valueChanges();
+  }
 }
