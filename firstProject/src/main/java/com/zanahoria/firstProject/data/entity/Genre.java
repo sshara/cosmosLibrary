@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"transaction_statuses\"")
-public class transaction_status implements Serializable {
+@Table(name = "\"genres\"")
+public class Genre implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +28,5 @@ public class transaction_status implements Serializable {
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
+
 }

@@ -4,19 +4,23 @@ package com.zanahoria.firstProject.data.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"genres\"")
-public class genre implements Serializable {
+@Table(name = "\"roles\"")
+public class Role implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +32,10 @@ public class genre implements Serializable {
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Valid
+    private List<User> users = new ArrayList<>();
 
 }

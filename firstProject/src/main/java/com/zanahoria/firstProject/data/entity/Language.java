@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"reasons\"")
-public class reason implements Serializable {
+@Table(name = "\"languages\"")
+public class Language implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

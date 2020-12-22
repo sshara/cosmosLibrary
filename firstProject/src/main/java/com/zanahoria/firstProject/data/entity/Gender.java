@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"roles\"")
-public class role implements Serializable{
+@Table(name = "\"genders\"")
+public class Gender implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +28,4 @@ public class role implements Serializable{
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
-
 }

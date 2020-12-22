@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"languages\"")
-public class language implements Serializable {
+@Table(name = "\"publishing_houses\"")
+public class PublishingHouse implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +28,5 @@ public class language implements Serializable {
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
+
 }

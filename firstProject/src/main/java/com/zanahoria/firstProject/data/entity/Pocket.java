@@ -1,5 +1,6 @@
 package com.zanahoria.firstProject.data.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,30 +9,29 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"user_statuses\"")
-public class user_status implements Serializable {
+@Table(name = "\"pocket\"")
+public class Pocket implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="\"id\"", nullable=false)
     private Long id;
 
-    @Pattern(regexp = "^[a-zA-Z0-9]+[a-zA-Z0-9 ]*$", message = "Wrong format field")
-    @Size(max = 255, message = "Limit characters exceeded")
+    @Pattern(regexp = "^[0-9]+(\\.)?[0-9]*$", message = "Wrong format field")
     @NotBlank(message = "Field required")
-    @Column(name="\"name\"", nullable=false)
-    private String name;
+    @Column(name="\"coins\"", nullable=false)
+    private Double coins;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "user_status", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<User> users;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false, orphanRemoval = true)
+    @JoinColumn(name = "user_fk", nullable = false)
+    private User user;
+
 
 }

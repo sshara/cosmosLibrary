@@ -15,8 +15,8 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"authors\"")
-public class author implements Serializable {
+@Table(name = "\"dni_types\"")
+public class DNIType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +28,4 @@ public class author implements Serializable {
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
-
 }

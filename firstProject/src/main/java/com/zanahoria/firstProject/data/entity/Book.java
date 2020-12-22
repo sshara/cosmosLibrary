@@ -1,4 +1,4 @@
 package com.zanahoria.firstProject.data.entity;
 
-public class address {
+public class Book {
 }
