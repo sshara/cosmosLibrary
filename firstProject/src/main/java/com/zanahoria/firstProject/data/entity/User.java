@@ -11,6 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -55,8 +57,13 @@ public class User implements Serializable{
     private UserStatus status;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Valid
     private Pocket pocket;
+
+    @ToString.Exclude
+    @Valid
+    @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Transaction> transactions = new ArrayList<>();
 
 }

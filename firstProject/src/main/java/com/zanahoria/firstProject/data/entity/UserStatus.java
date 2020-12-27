@@ -34,7 +34,7 @@ public class UserStatus implements Serializable {
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "user_status", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "UserStatus", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> users = new ArrayList<>();
 
 }

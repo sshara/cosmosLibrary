@@ -34,7 +34,7 @@ public class Role implements Serializable{
     private String name;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "Role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Valid
     private List<User> users = new ArrayList<>();
 

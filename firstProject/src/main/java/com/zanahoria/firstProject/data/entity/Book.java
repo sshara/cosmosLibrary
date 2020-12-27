@@ -47,4 +47,9 @@ public class Book implements Serializable {
     @Valid
     private List<Edition> editions = new ArrayList<>();
 
+    @ToString.Exclude
+    @Valid
+    @OneToMany(mappedBy = "Book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Transaction> transactions = new ArrayList<>();
+
 }
