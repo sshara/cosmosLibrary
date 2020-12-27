@@ -37,7 +37,7 @@ public class User implements Serializable{
     @Column(name="\"password\"", nullable=false)
     private String password;
 
-    @Pattern(regexp = "^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$" , message = "Wrong format field")
+    @Pattern(regexp = "^([a-zA-Z0-9_\\-.]+)@([a-zA-Z0-9_\\-.]+)\\.([a-zA-Z]{2,5})$" , message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
     @Column(name="\"email\"", nullable=false)
@@ -51,10 +51,12 @@ public class User implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "status_fk", nullable = false)
-    private user_status status;
+    @Valid
+    private UserStatus status;
 
     @ToString.Exclude
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @Valid
     private Pocket pocket;
 
 }

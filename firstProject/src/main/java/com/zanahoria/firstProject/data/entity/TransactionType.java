@@ -16,7 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "\"transaction_types\"")
-public class transaction_type implements Serializable {
+public class TransactionType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

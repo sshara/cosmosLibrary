@@ -4,12 +4,16 @@ package com.zanahoria.firstProject.data.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,4 +32,9 @@ public class DNIType implements Serializable {
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
+
+    @ToString.Exclude
+    @Valid
+    @OneToMany(mappedBy = "DNIType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PersonalData> personal_data = new ArrayList<>();
 }

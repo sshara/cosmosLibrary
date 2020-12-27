@@ -6,10 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "\"user_statuses\"")
-public class user_status implements Serializable {
+public class UserStatus implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +33,8 @@ public class user_status implements Serializable {
     private String name;
 
     @ToString.Exclude
+    @Valid
     @OneToMany(mappedBy = "user_status", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
 }
