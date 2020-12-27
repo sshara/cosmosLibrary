@@ -136,6 +136,7 @@ CREATE TABLE "transactions" (
     "transaction_date" DATE NOT NULL,
     "unit_price"  NUMBER(*,2) NOT NULL,
     "number_units"  NUMBER NOT NULL,
+    "total" NUMBER(*,2) GENERATED ALWAYS AS ("number_units" * "unit_price") VIRTUAL,
     "user_fk" NUMBER NOT NULL,
     "book_fk" NUMBER NOT NULL,
     "type_fk" NUMBER NOT NULL,
