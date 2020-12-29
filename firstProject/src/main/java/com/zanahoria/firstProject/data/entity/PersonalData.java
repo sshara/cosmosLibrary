@@ -27,13 +27,13 @@ public class PersonalData implements Serializable {
     @Column(name="\"dni\"", nullable=false, length = 20)
     private String dni;
 
-    @Pattern(regexp = "^[a-zA-Z]+[a-zA-Z]*$", message = "Wrong format field")
+    @Pattern(regexp = "^[a-zA-Z]+[a-zA-Z ]*$", message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
     @Column(name="\"name\"", nullable=false)
     private String name;
 
-    @Pattern(regexp = "^[a-zA-Z]+[a-zA-Z]*$", message = "Wrong format field")
+    @Pattern(regexp = "^[a-zA-Z]+[a-zA-Z ]*$", message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
     @Column(name="\"lastname\"", nullable=false)
@@ -46,7 +46,7 @@ public class PersonalData implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "dni_type_fk", nullable = false)
     @Valid
-    private DNIType dni_type;
+    private DNIType dniType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "gender_fk", nullable = false)
@@ -57,5 +57,10 @@ public class PersonalData implements Serializable {
     @JoinColumn(name = "address_fk", nullable = false)
     @Valid
     private Address address;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_fk", nullable = false)
+    @Valid
+    private User user;
 
 }

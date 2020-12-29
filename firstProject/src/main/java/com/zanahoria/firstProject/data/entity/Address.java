@@ -53,6 +53,6 @@ public class Address implements Serializable {
     @ToString.Exclude
     @Valid
     @OneToMany(mappedBy = "Address", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PersonalData> personal_data = new ArrayList<>();
+    private List<PersonalData> personalData = new ArrayList<>();
 
 }

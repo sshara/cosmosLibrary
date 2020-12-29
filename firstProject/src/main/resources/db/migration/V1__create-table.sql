@@ -95,12 +95,13 @@ CREATE TABLE "personal_data" (
     "birthdate" DATE NOT NULL,
     "dni_type_fk" NUMBER NOT NULL,
     "gender_fk" NUMBER NOT NULL,
-    "address_fk" NUMBER NOT NULL
+    "address_fk" NUMBER NOT NULL,
+    "user_fk" NUMBER NOT NULL
 );
 ALTER TABLE "personal_data" ADD FOREIGN KEY ("dni_type_fk") REFERENCES "dni_types"("id") ON DELETE CASCADE;
 ALTER TABLE "personal_data" ADD FOREIGN KEY ("gender_fk") REFERENCES "genders"("id") ON DELETE CASCADE;
 ALTER TABLE "personal_data" ADD FOREIGN KEY ("address_fk") REFERENCES "addresses"("id") ON DELETE CASCADE;
-
+ALTER TABLE "personal_data" ADD FOREIGN KEY ("user_fk") REFERENCES "users"("id") ON DELETE CASCADE;
 
 CREATE TABLE "books" (
     "id" NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
