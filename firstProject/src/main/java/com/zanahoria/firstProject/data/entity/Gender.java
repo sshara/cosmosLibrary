@@ -36,6 +36,6 @@ public class Gender implements Serializable {
     @ToString.Exclude
     @Valid
     @OneToMany(mappedBy = "Gender", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PersonalData> personal_data = new ArrayList<>();
+    private List<PersonalData> personalData = new ArrayList<>();
 
 }

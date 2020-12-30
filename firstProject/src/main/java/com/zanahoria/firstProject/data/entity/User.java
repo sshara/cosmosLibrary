@@ -66,4 +66,9 @@ public class User implements Serializable{
     @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Transaction> transactions = new ArrayList<>();
 
+    @ToString.Exclude
+    @Valid
+    @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PersonalData> personalData = new ArrayList<>();
+
 }
