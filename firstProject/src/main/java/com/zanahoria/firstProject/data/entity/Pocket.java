@@ -31,7 +31,7 @@ public class Pocket implements Serializable {
 
 
     @OneToOne(fetch = FetchType.LAZY, optional = false, orphanRemoval = true)
-    @JoinColumn(name = "user_fk", nullable = false)
+    @JoinColumn(name = "\"user_fk\"", nullable = false)
     @Valid
     private User user;
 

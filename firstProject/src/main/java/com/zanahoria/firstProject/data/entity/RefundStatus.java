@@ -35,7 +35,7 @@ public class RefundStatus implements Serializable {
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "RefundStatus", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "refundStatus", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Refund> refunds = new ArrayList<>();
 
 }

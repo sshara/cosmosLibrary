@@ -11,7 +11,6 @@ public interface UserMapper {
 
     User toUser(UserDTO user_dto);
 
-
     @Mapping(source = "password", target = "password", ignore = true)
     @InheritInverseConfiguration
     UserDTO fromUser(User user);

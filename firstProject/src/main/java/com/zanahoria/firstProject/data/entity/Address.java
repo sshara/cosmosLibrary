@@ -52,7 +52,7 @@ public class Address implements Serializable {
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "Address", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = PersonalData.class)
     private List<PersonalData> personalData = new ArrayList<>();
 
 }

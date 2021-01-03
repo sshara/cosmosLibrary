@@ -34,7 +34,7 @@ public class PublishingHouse implements Serializable {
     private String name;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "PublishingHouse", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "publishingHouse", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Valid
     private List<Edition> editions = new ArrayList<>();
 

@@ -33,23 +33,23 @@ public class Book implements Serializable {
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "author_fk", nullable = false)
+    @JoinColumn(name = "\"author_fk\"", nullable = false)
     @Valid
     private Author author;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "genre_fk", nullable = false)
+    @JoinColumn(name = "\"genre_fk\"", nullable = false)
     @Valid
     private Genre genre;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "Book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Valid
     private List<Edition> editions = new ArrayList<>();
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "Book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Transaction> transactions = new ArrayList<>();
 
 }

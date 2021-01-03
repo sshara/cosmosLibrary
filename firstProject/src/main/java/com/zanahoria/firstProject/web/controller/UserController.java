@@ -1,11 +1,14 @@
 package com.zanahoria.firstProject.web.controller;
 
 import com.zanahoria.firstProject.service.UserService;
+import com.zanahoria.firstProject.web.dto.ResponseDTO;
 import com.zanahoria.firstProject.web.dto.UserDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,22 +24,23 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<?> getUsers(){
-        List<UserDTO> response = userService.getUsers();
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        ResponseDTO res = userService.getUsers();
+        return ResponseEntity.status(HttpStatus.OK).body(res);
     }
 
 
-    /*
+
 
     @PostMapping()
-    public ResponseEntity<?> addUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO, BindingResult bindingResult){
+    public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO userDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Formulario con datos incorrectos.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("datos incorrectos");
         }
         else{
+            ResponseDTO res;
             try{
-                UsuarioDTO resp = usuarioService.addUsuario(usuarioDTO);
-                return ResponseEntity.status(HttpStatus.CREATED).body(resp);
+                res = userService.createUser(userDTO);
+                return ResponseEntity.status(HttpStatus.OK).body(res);
             }
             catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
@@ -44,7 +48,7 @@ public class UserController {
         }
     }
 
-
+/*
     @GetMapping(params = {"name", "email"}) // /nombre=pepinote?email=tu@pu.tita
     public ResponseEntity<?> getUsuariosWithNameLike(@RequestParam String nombre, @RequestParam String email){
         List<UsuarioDTO> resp = usuarioService.getUsuariosWithNameLike(nombre);
@@ -62,7 +66,6 @@ public class UserController {
         }
 
     }
-
 */
 
 }

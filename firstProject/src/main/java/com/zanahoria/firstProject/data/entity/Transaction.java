@@ -44,27 +44,27 @@ public class Transaction implements Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_fk", nullable = false)
+    @JoinColumn(name = "\"user_fk\"", nullable = false)
     @Valid
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "book_fk", nullable = false)
+    @JoinColumn(name = "\"book_fk\"", nullable = false)
     @Valid
     private Book book;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "type_fk", nullable = false)
+    @JoinColumn(name = "\"type_fk\"", nullable = false)
     @Valid
     private TransactionType transactionType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "status_fk", nullable = false)
+    @JoinColumn(name = "\"status_fk\"", nullable = false)
     @Valid
     private TransactionStatus transactionStatus;
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "Transaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Refund> refunds = new ArrayList<>();
 }

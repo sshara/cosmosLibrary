@@ -35,6 +35,6 @@ public class TransactionType implements Serializable {
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "TransactionType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "transactionType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Transaction> transactions = new ArrayList<>();
 }
