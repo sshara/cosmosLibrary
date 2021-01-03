@@ -1,8 +1,7 @@
-SET TRANSACTION NAME "create_tables";
 
 CREATE TABLE "roles" (
     "id" NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" VARCHAR(255) NOT NULL,
+    "name" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE "user_statuses" (
@@ -12,12 +11,12 @@ CREATE TABLE "user_statuses" (
 
 CREATE TABLE "dni_types" (
     "id" NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" VARCHAR(255) NOT NULL,
+    "name" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE "genders" (
     "id" NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" VARCHAR(255) NOT NULL,
+    "name" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE "genres" (
@@ -64,9 +63,9 @@ CREATE TABLE "publishing_houses" (
 
 CREATE TABLE "users" (
     "id" NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "username" VARCHAR(255) NOT NULL,
+    "username" VARCHAR(255) NOT NULL UNIQUE,
     "password" VARCHAR(255) NOT NULL,
-    "email" VARCHAR(255) NOT NULL,
+    "email" VARCHAR(255) NOT NULL UNIQUE,
     "role_fk" NUMBER NOT NULL,
     "status_fk" NUMBER NOT NULL
 );
@@ -141,7 +140,7 @@ CREATE TABLE "transactions" (
     "user_fk" NUMBER NOT NULL,
     "book_fk" NUMBER NOT NULL,
     "type_fk" NUMBER NOT NULL,
-    "status_fk" NUMBER NOT NULL,
+    "status_fk" NUMBER NOT NULL
 );
 ALTER TABLE "transactions" ADD FOREIGN KEY("user_fk") REFERENCES "users"("id") ON DELETE CASCADE;
 ALTER TABLE "transactions" ADD FOREIGN KEY("book_fk") REFERENCES "books"("id") ON DELETE CASCADE;
@@ -155,10 +154,9 @@ CREATE TABLE "refunds" (
     "units_to_refund"  NUMBER NOT NULL,
     "transaction_fk" NUMBER NOT NULL,
     "reason_fk" NUMBER NOT NULL,
-    "status_fk" NUMBER NOT NULL,
+    "status_fk" NUMBER NOT NULL
 );
 ALTER TABLE "refunds" ADD FOREIGN KEY("transaction_fk") REFERENCES "transactions"("id") ON DELETE CASCADE;
 ALTER TABLE "refunds" ADD FOREIGN KEY("reason_fk") REFERENCES "reasons"("id") ON DELETE CASCADE;
 ALTER TABLE "refunds" ADD FOREIGN KEY("status_fk") REFERENCES "refund_statuses"("id") ON DELETE CASCADE;
 
-COMMIT;

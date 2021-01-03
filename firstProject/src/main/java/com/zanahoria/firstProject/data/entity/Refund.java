@@ -26,17 +26,17 @@ public class Refund implements Serializable {
     private Integer units_to_refund;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "transaction_fk", nullable = false)
+    @JoinColumn(name = "\"transaction_fk\"", nullable = false)
     @Valid
     private Transaction transaction;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "reason_fk", nullable = false)
+    @JoinColumn(name = "\"reason_fk\"", nullable = false)
     @Valid
     private Reason reason;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "status_fk", nullable = false)
+    @JoinColumn(name = "\"status_fk\"", nullable = false)
     @Valid
     private RefundStatus refundStatus;
 

@@ -44,22 +44,22 @@ public class PersonalData implements Serializable {
     private Date birthdate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "dni_type_fk", nullable = false)
+    @JoinColumn(name = "\"dni_type_fk\"", nullable = false)
     @Valid
     private DNIType dniType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "gender_fk", nullable = false)
+    @JoinColumn(name = "\"gender_fk\"", nullable = false)
     @Valid
     private Gender gender;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "address_fk", nullable = false)
+    @JoinColumn(name = "\"address_fk\"", nullable = false)
     @Valid
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_fk", nullable = false)
+    @JoinColumn(name = "\"user_fk\"", nullable = false)
     @Valid
     private User user;
 

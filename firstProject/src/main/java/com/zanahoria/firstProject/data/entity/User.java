@@ -29,7 +29,7 @@ public class User implements Serializable{
     @Pattern(regexp = "^[a-zA-Z0-9]+[a-zA-Z0-9 ]*$", message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
-    @Column(name="\"username\"", nullable=false)
+    @Column(name="\"username\"", nullable=false, unique = true)
     private String username;
 
 
@@ -42,33 +42,33 @@ public class User implements Serializable{
     @Pattern(regexp = "^([a-zA-Z0-9_\\-.]+)@([a-zA-Z0-9_\\-.]+)\\.([a-zA-Z]{2,5})$" , message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
-    @Column(name="\"email\"", nullable=false)
+    @Column(name="\"email\"", nullable=false, unique = true)
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "role_fk", nullable = false)
+    @JoinColumn(name = "\"role_fk\"", nullable = false)
     @Valid
     private Role role;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "status_fk", nullable = false)
+    @JoinColumn(name = "\"status_fk\"", nullable = false)
     @Valid
-    private UserStatus status;
+    private UserStatus userStatus;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @Valid
     private Pocket pocket;
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Transaction> transactions = new ArrayList<>();
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "User", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PersonalData> personalData = new ArrayList<>();
 
 }

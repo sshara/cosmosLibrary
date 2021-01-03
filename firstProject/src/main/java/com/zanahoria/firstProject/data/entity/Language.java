@@ -34,7 +34,7 @@ public class Language implements Serializable {
     private String name;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "Language", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "language", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Valid
     private List<Edition> editions = new ArrayList<>();
 }

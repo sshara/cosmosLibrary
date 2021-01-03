@@ -35,6 +35,6 @@ public class DNIType implements Serializable {
 
     @ToString.Exclude
     @Valid
-    @OneToMany(mappedBy = "DNIType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dniType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PersonalData> personalData = new ArrayList<>();
 }
