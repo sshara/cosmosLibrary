@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface RoleRepo extends CrudRepository<Role, Long> {
 
-    //@Query(value = "SELECT * FROM \"roles\" WHERE \"id\" = :id", nativeQuery = true)
+    //@Query(value = "SELECT * FROM roles WHERE id = :id", nativeQuery = true)
     //Optional<Role> findById(@Param("id") Long id);
 
     Optional<Role> findByName(@Param("name") String name);

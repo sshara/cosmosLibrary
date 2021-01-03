@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface UserStatusRepo extends CrudRepository<UserStatus, Long> {
 
-    //@Query(value = "SELECT * FROM \"user_statuses\" WHERE \"id\" = :id", nativeQuery = true)
+    //@Query(value = "SELECT * FROM user_statuses WHERE id = :id", nativeQuery = true)
     //Optional<UserStatus> findById(@Param("id") Long id);
     Optional<UserStatus> findByName(@Param("name") String name);
 }

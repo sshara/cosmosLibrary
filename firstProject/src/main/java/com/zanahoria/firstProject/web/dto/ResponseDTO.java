@@ -18,10 +18,6 @@ public class ResponseDTO implements Serializable {
     private Map<String, Optional<?>> data = new HashMap<String, Optional<?>>();
     private Boolean success;
 
-    public Gson ToGson(){
-        return null;
-    }
-
     public void putData(String key, Optional<?> value){
        this.data.put(key, value);
     }

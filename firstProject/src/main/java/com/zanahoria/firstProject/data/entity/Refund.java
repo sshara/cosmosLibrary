@@ -13,30 +13,30 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"refunds\"")
+@Table(name = "refunds")
 public class Refund implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="\"id\"", nullable=false)
+    @Column(name="id", nullable=false)
     private Long id;
 
     @NotBlank(message = "Field required")
-    @Column(name="\"units_to_refund\"", nullable=false)
+    @Column(name="units_to_refund", nullable=false)
     private Integer units_to_refund;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "\"transaction_fk\"", nullable = false)
+    @JoinColumn(name = "transaction_fk", nullable = false)
     @Valid
     private Transaction transaction;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "\"reason_fk\"", nullable = false)
+    @JoinColumn(name = "reason_fk", nullable = false)
     @Valid
     private Reason reason;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "\"status_fk\"", nullable = false)
+    @JoinColumn(name = "status_fk", nullable = false)
     @Valid
     private RefundStatus refundStatus;
 

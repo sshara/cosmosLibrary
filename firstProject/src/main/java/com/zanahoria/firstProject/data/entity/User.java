@@ -18,41 +18,41 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"users\"")
+@Table(name = "users")
 public class User implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="\"id\"", nullable=false)
+    @Column(name="id", nullable=false)
     private Long id;
 
     @Pattern(regexp = "^[a-zA-Z0-9]+[a-zA-Z0-9 ]*$", message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
-    @Column(name="\"username\"", nullable=false, unique = true)
+    @Column(name="username", nullable=false, unique = true)
     private String username;
 
 
     @Pattern(regexp = "^[a-zA-Z0-9]+[a-zA-Z0-9 ]*$", message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
-    @Column(name="\"password\"", nullable=false)
+    @Column(name="password", nullable=false)
     private String password;
 
     @Pattern(regexp = "^([a-zA-Z0-9_\\-.]+)@([a-zA-Z0-9_\\-.]+)\\.([a-zA-Z]{2,5})$" , message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
-    @Column(name="\"email\"", nullable=false, unique = true)
+    @Column(name="email", nullable=false, unique = true)
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "\"role_fk\"", nullable = false)
+    @JoinColumn(name = "role_fk", nullable = false)
     @Valid
     private Role role;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "\"status_fk\"", nullable = false)
+    @JoinColumn(name = "status_fk", nullable = false)
     @Valid
     private UserStatus userStatus;
 

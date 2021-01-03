@@ -18,16 +18,16 @@ public interface UserRepo extends CrudRepository<User, Long> {
     @Query(value = "FROM User WHERE username = :username OR email = :email")
     Iterable<User> findByUsernameOrEmail(@Param("username") String username, @Param("email") String email);
 
-    //@Query(value = "SELECT * FROM \"users\" WHERE \"email\" = :email", nativeQuery = true)
+    //@Query(value = "SELECT * FROM users WHERE email = :email", nativeQuery = true)
     Optional<User> findByEmail(@Param("email") String email);
 
-    //@Query(value = "SELECT * FROM \"users\" WHERE \"id\" = :id", nativeQuery = true)
+    //@Query(value = "SELECT * FROM users WHERE id = :id", nativeQuery = true)
     //Optional<User> findById(@Param("id") Long id);
 
-    //@Query(value = "SELECT * FROM \"users\"", nativeQuery = true)
+    //@Query(value = "SELECT * FROM users", nativeQuery = true)
     //Iterable<User> findAll();
 
     @Modifying
-    @Query(value = "INSERT INTO \"users\" (\"email\", \"password\", \"role_fk\", \"status_fk\", \"username\") VALUES (:email, :password, :role_fk, :status_fk, :username)", nativeQuery = true)
+    @Query(value = "INSERT INTO users (email, password, role_fk, status_fk, username) VALUES (:email, :password, :role_fk, :status_fk, :username)", nativeQuery = true)
     Integer insertUser(@Param("email") String email, @Param("password") String password, @Param("role_fk") Long role_fk, @Param("status_fk") Long status_fk, @Param("username") String username);
 }

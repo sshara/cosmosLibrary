@@ -18,18 +18,18 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "\"user_statuses\"")
+@Table(name = "user_statuses")
 public class UserStatus implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="\"id\"", nullable=false)
+    @Column(name="id", nullable=false)
     private Long id;
 
     @Pattern(regexp = "^[a-zA-Z0-9]+[a-zA-Z0-9 ]*$", message = "Wrong format field")
     @Size(max = 255, message = "Limit characters exceeded")
     @NotBlank(message = "Field required")
-    @Column(name="\"name\"", nullable=false)
+    @Column(name="name", nullable=false)
     private String name;
 
     @ToString.Exclude
